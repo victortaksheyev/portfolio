@@ -1,0 +1,42 @@
+/* color scheme
+
+black   #000000
+white   #FCFBEB
+orange  #FFB00D
+dorange #FF8926
+blue    #1E4363
+red     #BC2D19
+
+*/
+
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+.my_custom {
+    color: #FF8926!important;
+    font-size: 1.9em;
+    
+}
+
+.frame {
+    height: auto!important;
+    text-align: center;
+
+    
+}
+
+.myImage {
+    display: block!important;
+    margin: auto!important;
+}
+
+body {
+    background-color: white;
+}
+
+.mini_desc{
+    color: #1E4363;
+    font-size: 1.1em;
+    font-family: 'Share Tech', sans-serif;
+}
