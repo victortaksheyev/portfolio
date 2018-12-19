@@ -2,16 +2,38 @@
 
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
        
               
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Hello, world!</title>
          <link rel="stylesheet" type="text/css" href="css/style.css">
+      
+
     </head>
     
     <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script>
+           /* function colChange() {
+                    var colors = ['#1E4363', '#BC2D19', '#000000'];
+                    var random_color = colors[Math.floor(Math.random() * colors.length)];
+                        document.getElementById('cover0').style.backgroundColor = random_color;
+                document.getElementById('cover1').style.backgroundColor = random_color;
+                document.getElementById('cover2').style.backgroundColor = random_color;
+                }
+            function revert() {
+                var color = '';
+                document.getElementById('cover0').style.backgroundColor = random_color;
+                document.getElementById('cover1').style.backgroundColor = random_color;
+                document.getElementById('cover2').style.backgroundColor = random_color;
+            }
+            */
+        </script>
+        
         
         <div class="container-fluid" style="max-width:1350px">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -22,63 +44,71 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">text <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Projects <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">text</a>
+                    <a class="nav-link" href="#">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">text </a>
+                    <a class="nav-link" href="#">Resume</a>
                   </li>
                 </ul>
               </div>
             </nav>
+            
+            
 
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
-                    <img class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
+                    <a href="#">
+                        <div class="imgFrame">
+                           <img class="img-fluid myImage" src="imgs/frame.JPG" onmouseover="colChange()">
+                            <div class="cover">
+                                <span class="coverText"><strong style="color: blue">Frame</strong> - website builder</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 frame"> 
-                    <img  class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                      <a href="remembit.html">
+                        <div class="imgFrame">
+                             <img class="img-fluid myImage" src="imgs/remembit.jpg" onmouseover="colChange()">
+                            <div class="cover">
+                                <span class="coverText"><strong style="color: orange">RememBit</strong> - circuit memory game</span>
+                            </div>
+                        </div>
+                     </a>
                 </div>
-                <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 col-md-offset-0 frame">
-                    <img  class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
-                </div>
-                
-            </div>
-            <div class="row pb-3 frame">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-md-offset-0 frame">
-                    <img class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
-                </div>
-                <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 frame"> 
-                    <img  class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
-                </div>
-                <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
-                    <img  class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
-                </div>
-                
-            </div>
-             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
-                    <img class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
+                    <a href="#">
+                        <div class="imgFrame">
+                            <img class="img-fluid myImage" src="imgs/audio.jpg" onmouseover="colChange()">
+                            <div class="cover">
+                                <span class="coverText">2d-to-3d <strong style="color: purple">Audio Converter</strong></span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 frame"> 
-                    <img  class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
-                </div>
-                <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
-                    <img  class="img-fluid myImage" src="https://picsum.photos/450/270/?random">
-                    <p class="mini_desc">sadf</p>
-                </div>
-                
             </div>
-        </div>
-    </body>
+              <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                    <a href="#">
+                        <div class="imgFrame">
+                           <img class="img-fluid myImage" src="imgs/telemetry.PNG" onmouseover="colChange()">
+                            <div class="cover">
+                                <span class="coverText">Rocket <strong style="color: red">Telemetry</strong> Visualizer</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+              
+            </div>
+            
+           
+    
+ 
 </html>
+
+  <!--
+                    <p class="mini_desc">sample Text</p>
+                    -->

@@ -7,6 +7,12 @@ dorange #FF8926
 blue    #1E4363
 red     #BC2D19
 
+
+dark b  #25274D
+lighterb#464866
+gray    #AAABB8
+lightB  #2E9CCA
+darkB   #29648A
 */
 
 .selector-for-some-widget {
@@ -14,7 +20,7 @@ red     #BC2D19
 }
 
 .my_custom {
-    color: #FF8926!important;
+    color: #25274D!important;
     font-size: 1.9em;
     
 }
@@ -22,7 +28,6 @@ red     #BC2D19
 .frame {
     height: auto!important;
     text-align: center;
-
     
 }
 
@@ -35,8 +40,55 @@ body {
     background-color: white;
 }
 
+/*
 .mini_desc{
     color: #1E4363;
     font-size: 1.1em;
     font-family: 'Share Tech', sans-serif;
+}
+*/
+
+.imgFrame {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+
+    
+}
+span.coverText {
+    color: black;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.cover {
+    position: relative;
+    background-color: #ffffff;
+    border-bottom: white;
+    font-family: 'Share Tech', sans-serif;
+    font-size: 1.1em;
+    opacity: 10;
+}
+
+
+.imgFrame:hover .cover {
+    opacity: 0.85;
+    border-bottom: 2px solid #25274D;
+    border-right: 2px solid #25274D;
+    border-left: 2px solid #25274D;
+    color: white;
+   
+}
+
+.bold{
+    font-weight: 800;
+}
+
+.carousel-control-prev-icon {
+    background-color: #25274D;
+}
+
+.carousel-control-next-icon {
+    background-color: #25274D;
 }
