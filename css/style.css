@@ -65,10 +65,31 @@ darkB   #29648A
     padding-top: 10px;
 }
 
+.codeBlock {
+    background-color: #f4f4f4;
+    height: 100%;
+    padding: 20px 20px 0px 20px;
+    border: none;
+}
+
+.consoleBlock {
+    background-color: #303030;
+    height: 100%;
+    padding: 20px 20px 0px 20px;
+}
+
 .my_custom {
     color: #25274D!important;
     font-size: 1.9em;
     
+}
+
+.code {
+    border: none !important;
+    color: white;
+    text-align: left;
+    font-size: .7em;
+
 }
 
 .frame {
@@ -78,6 +99,11 @@ darkB   #29648A
 }
 
 .myImage {
+    display: block!important;
+    margin: auto!important;
+}
+
+.center {
     display: block!important;
     margin: auto!important;
 }
