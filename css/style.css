@@ -51,6 +51,14 @@ darkB   #29648A
     padding-bottom: 3px;
 }
 
+.underimgDBlue {
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 4px solid #476aa3;
+    border-right: 4px solid #476aa3;
+    border-left: 4px solid #476aa3;
+    padding-bottom: 3px;
+}
+
 .myText {
     color: #4c320e;
     font-size: .9em;
