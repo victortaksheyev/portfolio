@@ -19,50 +19,28 @@ darkB   #29648A
   box-sizing: content-box;
 }
 
-.underimgOr {
-    border-radius: 0px 0px 10px 10px;
-    border-bottom: 4px solid #f7c47e;
-    border-right: 4px solid #f7c47e;
-    border-left: 4px solid #f7c47e;
-    padding-bottom: 3px;
-}
 
 .underimgB {
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 0px 0px;
     border-bottom: 4px solid #29648A;
     border-right: 4px solid #29648A;
     border-left: 4px solid #29648A;
     padding-bottom: 3px;
+    padding: 10px;
+    height: 135px;
 }
 
-.underimgGray {
-    border-radius: 0px 0px 10px 10px;
-    border-bottom: 4px solid #99a0a8;
-    border-right: 4px solid #99a0a8;
-    border-left: 4px solid #99a0a8;
-    padding-bottom: 3px;
+.underimgB:hover {
+    border-bottom: 4px solid #68b4e8;
+    border-right: 4px solid #68b4e8;
+    border-left: 4px solid #68b4e8;
 }
 
-.underimgPurp {
-    border-radius: 0px 0px 10px 10px;
-    border-bottom: 4px solid #464866;
-    border-right: 4px solid #464866;
-    border-left: 4px solid #464866;
-    padding-bottom: 3px;
-}
-
-.underimgDBlue {
-    border-radius: 0px 0px 10px 10px;
-    border-bottom: 4px solid #476aa3;
-    border-right: 4px solid #476aa3;
-    border-left: 4px solid #476aa3;
-    padding-bottom: 3px;
-}
 
 .myText {
     color: #4c320e;
-    font-size: .9em;
-    padding-top: 10px;
+    font-size: .95em;
+    padding-top: 15px;
 }
 
 .codeBlock {
@@ -129,9 +107,10 @@ body {
 }
 span.coverText {
     color: black;
+    font-size: 1.3em;
     display: inline-block;
     vertical-align: middle;
-    font-weight: bold;
+    font-weight: 400;
 
 }
 
