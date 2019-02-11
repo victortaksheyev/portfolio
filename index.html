@@ -17,27 +17,12 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script>
-           /* function colChange() {
-                    var colors = ['#1E4363', '#BC2D19', '#000000'];
-                    var random_color = colors[Math.floor(Math.random() * colors.length)];
-                        document.getElementById('cover0').style.backgroundColor = random_color;
-                document.getElementById('cover1').style.backgroundColor = random_color;
-                document.getElementById('cover2').style.backgroundColor = random_color;
-                }
-            function revert() {
-                var color = '';
-                document.getElementById('cover0').style.backgroundColor = random_color;
-                document.getElementById('cover1').style.backgroundColor = random_color;
-                document.getElementById('cover2').style.backgroundColor = random_color;
-            }
-            */
-        </script>
         
         
-        <div class="container-fluid" style="max-width:1350px">
-            <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 10px;">
-                <a href="index.html"><h1 class="navbar-brand my_custom">Victor Taksheyev</h1></a>
+        <div class="container-fluid" style="max-width:1350px; background-color: #f9fbff;">
+           <div style="width=100%; height: 100%; margin-bottom: 50px;"> 
+            <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 10px; width: 40%; margin-left:30%; border-bottom: 5px solid #303030;">
+                <a href="index.html"><h1 class="navbar-brand my_custom bold">Victor Taksheyev</h1></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -55,88 +40,68 @@
                 </ul>
               </div>
             </nav>
-            
+            </div>
             <div class="row pb-3 frame" style="margin-top: -20px;">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
                         <a href="pages/frame.html">
-                           <div class="imgFrame">
-                              <img class="card-img-top topSpace" src="imgs/frame.JPG" alt="Card image cap">
-                               <div class="underimgB">
-                                     <span class="coverText"><strong style="color: blue">Frame</strong> - Template Builder Site </span>
-                                    <p class="card-text myText" >A website that automatically codes the framework of a user's site, depending on their preferences.</p>
-                                </div>
+                           <div class="imgFrame topSpace">
+                                <img class="card-img-top" src="imgs/frame.JPG" alt="Card image cap">
+                                    <p class="imgFrameTxt"> A website that automatically codes the framework of a user's site, depending on their preferences.</p>
                             </div>
+                            <span class="coverText"><strong class="emph">Frame</strong> - Template Builder Site </span>
                         </a>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
                         <a href="pages/remembit.html">
-                           <div class="imgFrame">
-                              <img class="card-img-top topSpace" src="imgs/remembit.jpg" alt="Card image cap">
-                               <div class="underimgB">
-                                     <span class="coverText"><strong style="color: orange">Remembit</strong> - Circuit Memory Game </span>
-                                    <p class="card-text myText">A memory game developed using combinational and sequential logic, implemented on the DE0-CV FPGA</p>
-                                </div>
+                           <div class="imgFrame topSpace">
+                                <img class="card-img-top " src="imgs/remembit.jpg" alt="Card image cap">
+                                    <p class="imgFrameTxt"> A memory game developed using combinational and sequential logic, implemented on the DE0-CV FPGA</p>        
                             </div>
+                            <span class="coverText"><strong class="emph">Remembit</strong> - Circuit Memory Game </span>
                         </a>
                     </div>
     
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
                         <a href="pages/audio.html">
-                           <div class="imgFrame">
-                              <img class="card-img-top topSpace" src="imgs/audio.jpg" alt="Card image cap">
-                               <div class="underimgB">
-                                     <span class="coverText">2d-to-3d <strong style="color: purple">Audio Converter</strong></span>
-                                    <p class="card-text myText">A python application that transforms any song into a concert experience</p>
-                                
+                           <div class="imgFrame topSpace">
+                              <img class="card-img-top" src="imgs/audio.jpg" alt="Card image cap">
+                                    <p class="imgFrameTxt"> A python application that transforms any song into a concert experience</p>  
                                 </div>
-                            </div>
+                            <span class="coverText">2d-to-3d <strong class="emph">Audio Converter</strong></span>
+                                    
                         </a>
                     </div>
             
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame" style="margin-top: 20px">
                         <a href="pages/telemetry.html">
-                           <div class="imgFrame">
-                              <img class="card-img-top topSpace" src="imgs/telemetry.PNG" alt="Card image cap">
-                               <div class="underimgB">
-                                     <span class="coverText">Rocket <strong style="color: red">Telemetry</strong> Visualizer</span>
-                                    <p class="card-text myText" style="color: #4c320e; font-size: .9em; ">Python and Arduino program that recieves, formats, and visualizes data from rocket sensors</p>                                
-                                </div>
+                           <div class="imgFrame topSpace">
+                                <img class="card-img-top" src="imgs/telemetry.PNG" alt="Card image cap">
+                                <p class="imgFrameTxt"> Python and Arduino program that recieves, formats, and visualizes data from rocket sensors</p>            
                             </div>
+                            <span class="coverText">Rocket <strong class="emph">Telemetry</strong> Visualizer</span>                  
                         </a>
                     </div>
                 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame" style="margin-top: 20px">
                     <a href="pages/data.html">
-                        <div class="imgFrame">
-                            <img class="card-img-top topSpace" src="imgs/data.png" alt="Card image cap">
-                            <div class="underimgB">
-                                <span class="coverText">Graduate Admission <strong style="color: #476aa3">Data Analysis</strong> </span>
-                                <p class="card-text myText" style="color: #4c320e; font-size: .9em; ">Using multiple regression and statistical reasoning algorithms to predict students' chance of college admission</p>                                
-                            </div>
+                        <div class="imgFrame topSpace">
+                            <img class="card-img-top " src="imgs/data.png" alt="Card image cap">
+                                <p class="imgFrameTxt"> Using multiple regression and statistical reasoning algorithms to predict students' chance of college admission</p>     
                         </div>
+                        <span class="coverText">Graduate Admission <strong class="emph">Data Analysis</strong> </span>    
                     </a>
                 </div>
               
             </div>
             
-            
-                
-            </div>
-            
-
-        
               
+                 <div class="row pb-3 frame" style=" margin-top: 40px; margin-bottom: 0!important;">
+                        <div class="consoleBlock" style="height: 70px; text-align: center; width:100%;">  
+                        <a style="color: white;" class="bold" href="mailto:victortaksheyev@gmail.com"> victortaksheyev@gmail.com </a>
+                        </div>
+                </div>
             </div>
-            
-            
-            
-            
-           
-    
+
  
 </html>
-
-  <!--
-                    <p class="mini_desc">sample Text</p>
-                    -->

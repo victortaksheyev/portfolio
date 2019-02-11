@@ -19,6 +19,7 @@ darkB   #29648A
   box-sizing: content-box;
 }
 
+/*
 
 .underimgB {
     border-radius: 0px 0px 0px 0px;
@@ -28,8 +29,9 @@ darkB   #29648A
     padding-bottom: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    height: 135px;
+    height: 100%;
 }
+*/
 
 .underimgB:hover {
     border-bottom: 4px solid #68b4e8;
@@ -45,6 +47,10 @@ darkB   #29648A
     color: #4c320e;
     font-size: .95em;
     padding-top: 15px;
+}
+
+.emph {
+    color: #476aa3;
 }
 
 .codeBlock {
@@ -106,17 +112,37 @@ body {
     position: relative;
     width: 100%;
     display: inline-block;
-
-    
 }
+
+.imgFrameTxt {
+    position:absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: rgba(70, 72, 102, 0.7);
+    color: white;
+    visibility: hidden;
+    height: 20%;
+    padding: 20% 5% 20% 5%;
+    
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: opacity .2s, visibility .2s;
+}
+
+.imgFrame:hover .imgFrameTxt {
+    visibility: visible;
+    opacity: 1;
+}
+
 span.coverText {
     color: black;
-    font-size: 1.3em;
+    font-size: 1em;
     display: inline-block;
-    font-weight: 400;
+    font-weight: 700;
     margin-top: 10px;
 }
-
 
 .bold{
     font-weight: 800;
