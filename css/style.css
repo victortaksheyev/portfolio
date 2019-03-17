@@ -96,6 +96,7 @@ darkB   #29648A
 .center {
     display: block!important;
     margin: auto!important;
+    padding: 10px;
 }
 
 body {
