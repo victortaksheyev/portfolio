@@ -27,6 +27,10 @@ darkB   #29648A
   box-sizing: content-box;
 }
 
+.padding {
+    padding-bottom: 5px;
+}
+
 .navMid {
     margin-top: 10px;
     width: 40%;
@@ -53,6 +57,11 @@ darkB   #29648A
 
 .emph {
     color: #476aa3;
+}
+
+.noPadding{
+/*    padding:0px!important;*/
+    margin: 0px!important;
 }
 
 .codeBlock {

@@ -13,6 +13,7 @@
     </head>
 
     <body>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -46,12 +47,47 @@
                 <div class="col">
                     <h1>The Idea</h1>
                     <p>My friend, Mikian, created an artificial neural network to recognize hand-written digits from the MNIST dataset. We thought it would be cool to visualize what the neural network outputs on a real-life seven segment, so we built one.</p>
-                    <img src="https://photos.google.com/album/AF1QipPX5pbEAXj66Tkv-bkLR2AU50shEcd2ckqZd4YQ/photo/AF1QipMvTr9KNC-QDfyhI9gar1zTag1_3L-EpeKc8B18">
-
                 </div>
-                
-
             </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 noPadding padding">
+                    <img class="img-fluid myImage" src="../imgs/seg/2.png">
+                </div>
+                <div class="col-sm-12 col-md-6 noPadding padding">
+                    <img class="img-fluid myImage" src="../imgs/seg/8.png">
+                </div>
+                <p class="center">Visual representation of Mikian's neural network</p>
+            </div>
+            <h4> Building the 7-seg</h4>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 padding">
+                    <img class="img-fluid myImage" src="../imgs/seg/8struct.JPG">
+                
+                </div>
+                <div class="col-lg-3 col-md-6 padding">
+                    <img class="img-fluid myImage" src="../imgs/seg/wiring.JPG">
+                </div>
+                <div class="col-lg-6 col-sm-12 padding">
+                    
+                    
+                    <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/1Q9wlmTBLFbEViKLAs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/1Q9wlmTBLFbEViKLAs">via GIPHY</a></p>
+                </div>
+            </div>
+            <h4> Communicating Through Serial</h4>
+           <div class="codeBlock">
+                    <pre class="prettyprint code">
+X_train, X_test, y_train, y_test = train_test_split(X_opt, y, test_size = 0.2, random_state = 3)
+
+regressor2 = LinearRegression()
+regressor2.fit(X_train, y_train)
+y_pred = regressor2.predict(X_test)
+
+R2=r2_score(y_test,y_pred)
+MSE=mean_squared_error(y_test,y_pred)
+print("R squared value:",R2, '\n' + "Mean squared error:",MSE)
+                    </pre>
+                </div>
+            
             
                                 <h1 class="bold center">In progress</h1>
 
