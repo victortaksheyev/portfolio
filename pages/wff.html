@@ -8,11 +8,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Audio</title>
          <link rel="stylesheet" type="text/css" href="../css/style.css">
-      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    
 
     </head>
 
     <body>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -41,9 +46,250 @@
                 <h1 class="display-4 bold inline" style="color:white;">WFF Algorithm</h1><a href="https://github.com/victortaksheyev/algorithms/blob/master/phil422/recursive.py"><button class="btn btn-outline-light siteLink">View Code</button></a>
                 <p class="lead" style="color: #e5eefc">Algorithm for restoring parentheses in sentential logic sentences to turn them into well-formed formulas (WFFs) </p>
                 <hr class="my-4" style="background-color:#e5eefc">
-                <p style="color: #e5eefc"> <span style="color: #F2C48D">Key concepts/tech used:</span> recursion, python, mathematical modeling <span></span></p>
+                <p style="color: #e5eefc"> <span style="color: #F2C48D">Key concepts/tech used:</span> recursion, combinatorics, python, mathematical modeling <span></span></p>
             </div>
-                                <h1 class="bold center">In progress</h1>
+            <div class="row">
+                <div class="col-12 ">
+                    <h1>The Idea</h1>
+                    <p style="text-align: left">Meaningful logical sentences are called <b>well-formed formulas (WFFs)</b>. The definition of a WFF is recursive: </p>
+                    
+                    <div style="text-align: left">
+                        <b>1.</b> Atomic sentences are WFFs <br>
+                        <b>2.</b> If $\phi $ is a WFF, so is $ \lnot \phi $ <br>
+                        <b>3.</b> If  $\phi $ and  $\psi $ are WFFs, so are  $\phi \land \psi $, $\phi \lor \psi $, $\phi \rightarrow \psi $, $\phi \leftrightarrow \psi $ <br>
+                        <b>4.</b> Nothing else is a WFF
+                    </div>
+                        <br>
+                    <div>
+                    
+                    <table class="centerTable">
+                      <tr>
+                        <th style="text-align: center; color: #e5eefc; background-color: black; ">WFF</th>
+                        <th style="text-align: center; color: #e5eefc; background-color: black">Not WFF</th> 
+                        
+                      </tr>
+                      <tr>
+                        <td class="tableCell"style="text-align: center;border-right: 1px solid black">$A$</td>
+                        <td class="tableCell"style="text-align: center">$AB$</td>
+                        
+                        
+                      </tr>
+                      <tr>
+                        <td class="tableCell" style="text-align: center; border-right: 1px solid black">$(A\lor B)$</td>
+                        <td class="tableCell"style="text-align: center">$A( \lor B)$</td> 
+                        
+                      </tr>
+                        
+                       <tr>
+                        <td class="tableCell"style="text-align: center; border-right: 1px solid black">$(A\lor B) \rightarrow (\lnot C)$</td>
+                        <td class="tableCell"style="text-align: center">$A( \lor \land \lnot B )$</td> 
+                        
+                      </tr>
+                    </table>
+                        <br>
+                        <p style="text-align:left"> While there are infinite ways to <b>add parentheses</b> to WFFs for them to remain WFFs, there are finite ways to <b>restore parentheses</b> to sentences to turn them into WFFs. The number of ways to restore parenthesis is a function of the number of operators within the sentence being restored. <i>The following is demonstrated below:</i></p>
+                        
+                        <table class="centerTable">
+                      <tr>
+                        <th class="leftCell" style="text-align: center; color: #e5eefc; background-color: black; ">Connectives</th>
+                        <th style="text-align: center; color: #e5eefc; background-color: black">Ways of <br>Restoring Parenths</th>
+                        <th class="rightCell" style="text-align: center; color: #e5eefc; background-color: black">Demo</th> 
+                        
+                      </tr>
+                      <tr>
+                        <td class="tableCell leftCell">0</td>
+                        <td class="tableCell">1</td>
+                        <td class="tableCell rightCell">$(A)$</td>
+                          
+                        
+                        
+                      </tr>
+                      <tr>
+                        <td class="tableCell leftCell">1</td>
+                        <td class="tableCell">1</td> 
+                        <td class="tableCell rightCell">$(A \lor B)$</td>
+                        
+                      </tr>
+                        
+                       <tr>
+                        <td class="tableCell leftCell">2</td>
+                        <td class="tableCell">2</td> 
+                        <td class="tableCell rightCell">$(A \lor B) \lor C$ <br> $A \lor (B \lor C)$ </td>
+                      </tr>
+                            
+                                        
+                       <tr>
+                        <td class="tableCell leftCell">...</td>
+                        <td class="tableCell">...</td> 
+                        <td class="tableCell rightCell">... </td>
+                      </tr>
+                            
+                       <tr>
+                        <td class="tableCellBottom leftCell">$n$</td>
+                        <td class="tableCellBottom">$W(0) = 1$ <br> $W(n) = \sum\limits_{k=1}^{n-1} W(k)W(n-1-k)$  for 
+                $n>0$</td> 
+                        <td class="tableCellBottom rightCell">... </td>
+                      </tr>
+                     
+                    </table>
+                        
+                    
+                        <p style="font-size: .8em; text-align: center">*For readability, I excluded parentheses around atomics </p>
+                        
+                        <p style="text-align: left"> <b>My goal</b> was to create an algorithm that would take a sentential logic sentence as <b>input</b> and <b>ouput</b> all possible well-formed formulas</p>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                <h4>Algorithm for 2-place connectives</h4>
+                <p>For each connective in the sentence, I am treating it as the "major connective", creating a <i>left</i> and <i>right</i> side with respect to it, then recursively performing the same process on the left and right sides until I reach an atomic. Once I reach the atomic, I return it, adding parentheses to the result. </p>
+                </div>
+                <div class="col-md-6 center">
+                    <img class="img-fluid myImage" src="../imgs/wff/simpleDemo.png">
+                    
+                </div>
+                <p style="text-align: center">Demonstration of how a sentence is decomposed into a <b>left</b> and <b>right</b> until  atomics are reached. The result is returned and concatenated with parentheses and operator.</p>
+                <div class="col-12">
+                    <img class="img-fluid myImage" src="../imgs/wff/loops.png">
+                    
+                    While recursion is used to decompose and restore parentheses, it is insufficient. An iterative element is used to loop through each connective to treat it as the "major connective".
+                    <img class="img-fluid myImage" src="../imgs/wff/3place.png">
+                    <p style="text-align: center">Together, they are able to cycle through all of the operators, decomposing each into a left and right and reconstructing them as well-formed formulas.</p>
+                </div>
+            
+            </div>
+            
+            <div class="row">
+            <div class="col-12">
+             <div class="codeBlock">
+            <pre class="prettyprint code">
+def rec(wff):
+    ind = []                                        
+    if len(wff) == 1:
+        yield wff
+        return 
+    else:
+        for i in range(numConnectives(wff)):        
+            opIndex = findConnective(wff, ind)      
+            right   = createRight(wff, opIndex)     
+            left    = createLeft(wff, opIndex)      
+            for left_subexpr in rec(left):
+                for right_subexpr in rec(right):
+                    yield "(" + left_subexpr + ")" + wff[opIndex] + "(" + right_subexpr + ")"
+                </pre>
+                 </div>
+                
+                </div>
+                <div class="col-12">
+                <p style="text-align: center"> Main recursive algorithm to handle two-place operators written in python</p>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h4>Adding in the 1-place connective</h4>
+                    
+                </div>
+                <div class="col-md-4 center">
+                <img class="img-fluid myImage" src="../imgs/wff/1place.png">
+                </div>
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    The one-place operator only governs over what's immediately to the right of it. Because of this, there is no longer a <i>left side</i> and <i>right side</i>. There is only a right side
+                </div>
+                
+                <div class ="col-12">
+                    <div class="codeBlock">
+                        <pre class="prettyprint code">
+            def rec(wff):
+                ind = []                                        
+                if len(wff) == 1 and wff not in one_place_conn:
+                    yield wff
+                    return
+                if len(wff) == 2 and one_place_conn in wff and (wff[0] and wff[1] not in one_place_conn):
+                    yield "(" + wff + ")"
+                    return 
+                else:
+                    for i in range(numConnectives(numOnePlaceConns(wff), numTwoPlaceConns(wff))):        
+                        opIndex = findConnective(wff, ind)      
+                        right   = createRight(wff, opIndex)     
+                        left    = createLeft(wff, opIndex)     
+                        if (wff[opIndex] == one_place_conn):
+                            if (len(left) > 0):
+                                for left_subexpr in rec(left):
+                                    for right_subexpr in rec(right):
+                                        yield "(" + left_subexpr + wff[opIndex] + right_subexpr + ")"
+                            else:
+                                if (len(right)>1):
+                                    for right_subexpr in rec(right):
+                                        yield "(" + wff[opIndex] + right_subexpr + ")"
+                                else:
+                                    break
+                        else:
+                            for left_subexpr in rec(left):
+                                for right_subexpr in rec(right):
+                                    yield "(" + left_subexpr + wff[opIndex] + right_subexpr + ")"
+                            </pre>
+                     </div>
+                </div>
+                <div class="col-12" > 
+                    <p style="text-align: center">Addition of the 1-place operator case into the recursive algorithm</p>
+                    
+                    <p>Since the 1-place connective case is just a part of a more general algorithm, the algorithm continues on the <i>right side</i> of the one-place connective - regardless if it encounters one or two-place connectives.</p>
+                </div>
+            </div>
+            
+        
+            
+            <h4> Testing on my homework </h4>
+            <div class="row">
+                <div class="col-md-6">
+                <img class="img-fluid myImage" src="../imgs/wff/homework.jpg">
+                     
+                </div>
+                <div class="col-md-6">
+                <div class="consoleBlock">
+                        <pre class="code" style="font-size: 18px">
+Enter SL sentence: -P&Q>-RvS
+All possible well-formed formulas:
+1 (-(P&(Q>(-(RvS)))))
+2 (-(P&(Q>((-R)vS))))
+3 (-(P&((Q>(-R))vS)))
+4 (-((P&Q)>(-(RvS))))
+5 (-((P&Q)>((-R)vS)))
+6 (-((P&(Q>(-R)))vS))
+7 (-(((P&Q)>(-R))vS))
+8 ((-P)&(Q>(-(RvS))))
+9 ((-P)&(Q>((-R)vS)))
+10 ((-P)&((Q>(-R))vS))
+11 ((-(P&Q))>(-(RvS)))
+12 ((-(P&Q))>((-R)vS))
+13 (((-P)&Q)>(-(RvS)))
+14 (((-P)&Q)>((-R)vS))
+15 ((-(P&(Q>(-R))))vS)
+16 ((-((P&Q)>(-R)))vS)
+17 (((-P)&(Q>(-R)))vS)
+18 (((-(P&Q))>(-R))vS)
+19 ((((-P)&Q)>(-R))vS)
+                        </pre>
+                        
+                    </div>
+                </div>
+            <div class="col-12" style="text-align: center">While not in the same order, the algorithm produced the correct result.</div>
+            </div>
+            
+            <h4> Finding a non-recursive formula / approximation</h4>
+            
+            </div>
+            
+            
+            
+            
+            <h1 class="bold center">In proggress</h1>
 
         </div>
     </body>
