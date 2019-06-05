@@ -6,7 +6,7 @@
        
               
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Audio</title>
+        <title>WFF Algorithm</title>
          <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/x-mathjax-config">
           MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
@@ -43,14 +43,15 @@
             </nav>
             
             <div class="jumbotron" style="background-color: #303030">
-                <h1 class="display-4 bold inline" style="color:white;">WFF Algorithm</h1><a href="https://github.com/victortaksheyev/algorithms/blob/master/phil422/recursive.py"><button class="btn btn-outline-light siteLink">View Code</button></a>
+                <h1 class="display-4 bold inline" style="color:white;">WFF Algorithm</h1><a href="https://github.com/victortaksheyev/wffAlgorithm"><button class="btn btn-outline-light siteLink">View Code</button></a>
                 <p class="lead" style="color: #e5eefc">Algorithm for restoring parentheses in sentential logic sentences to turn them into well-formed formulas (WFFs) </p>
                 <hr class="my-4" style="background-color:#e5eefc">
-                <p style="color: #e5eefc"> <span style="color: #F2C48D">Key concepts/tech used:</span> recursion, combinatorics, python, mathematical modeling <span></span></p>
+                <p style="color: #e5eefc"> <span style="color: #F2C48D">Key concepts/tech used:</span> recursion, combinatorics, python, mathematical modeling <br>
+                <span style="color: #F2C48D">Under the guidance of </span> Dr. Jesse Fitts</p>
             </div>
             <div class="row">
                 <div class="col-12 ">
-                    <h1>The Idea</h1>
+                    <h3>The Idea</h3>
                     <p style="text-align: left">Meaningful logical sentences are called <b>well-formed formulas (WFFs)</b>. The definition of a WFF is recursive: </p>
                     
                     <div style="text-align: left">
@@ -64,32 +65,32 @@
                     
                     <table class="centerTable">
                       <tr>
-                        <th style="text-align: center; color: #e5eefc; background-color: black; ">WFF</th>
-                        <th style="text-align: center; color: #e5eefc; background-color: black">Not WFF</th> 
+                        <th style="text-align: center; color: #e5eefc; background-color: black;" class="leftCell">WFF</th>
+                        <th class="rightCell" style="text-align: center; color: #e5eefc; background-color: black">Not WFF</th> 
                         
                       </tr>
                       <tr>
-                        <td class="tableCell"style="text-align: center;border-right: 1px solid black">$A$</td>
-                        <td class="tableCell"style="text-align: center">$AB$</td>
+                        <td class="tableCell leftCell"style="text-align: center;border-right: 1px solid black">$A$</td>
+                        <td class="tableCell rightCell"style="text-align: center">$AB$</td>
                         
                         
                       </tr>
                       <tr>
-                        <td class="tableCell" style="text-align: center; border-right: 1px solid black">$(A\lor B)$</td>
-                        <td class="tableCell"style="text-align: center">$A( \lor B)$</td> 
+                        <td class="tableCell leftCell" style="text-align: center; border-right: 1px solid black">$(A\lor B)$</td>
+                        <td class="tableCell rightCell"style="text-align: center">$A( \lor B)$</td> 
                         
                       </tr>
                         
                        <tr>
-                        <td class="tableCell"style="text-align: center; border-right: 1px solid black">$(A\lor B) \rightarrow (\lnot C)$</td>
-                        <td class="tableCell"style="text-align: center">$A( \lor \land \lnot B )$</td> 
+                        <td class="tableCellBottom leftCell "style="text-align: center; border-right: 1px solid black ">$(A\lor B) \rightarrow (\lnot C)$</td>
+                        <td class="tableCellBottom rightCell "style="text-align: center ">$A( \lor \land \lnot B )$</td> 
                         
                       </tr>
                     </table>
                         <br>
                         <p style="text-align:left"> While there are infinite ways to <b>add parentheses</b> to WFFs for them to remain WFFs, there are finite ways to <b>restore parentheses</b> to sentences to turn them into WFFs. The number of ways to restore parenthesis is a function of the number of operators within the sentence being restored. <i>The following is demonstrated below:</i></p>
                         
-                        <table class="centerTable">
+                        <table class="centerTable largeTable">
                       <tr>
                         <th class="leftCell" style="text-align: center; color: #e5eefc; background-color: black; ">Connectives</th>
                         <th style="text-align: center; color: #e5eefc; background-color: black">Ways of <br>Restoring Parenths</th>
@@ -100,15 +101,12 @@
                         <td class="tableCell leftCell">0</td>
                         <td class="tableCell">1</td>
                         <td class="tableCell rightCell">$(A)$</td>
-                          
-                        
-                        
                       </tr>
+                            
                       <tr>
                         <td class="tableCell leftCell">1</td>
                         <td class="tableCell">1</td> 
                         <td class="tableCell rightCell">$(A \lor B)$</td>
-                        
                       </tr>
                         
                        <tr>
@@ -116,7 +114,6 @@
                         <td class="tableCell">2</td> 
                         <td class="tableCell rightCell">$(A \lor B) \lor C$ <br> $A \lor (B \lor C)$ </td>
                       </tr>
-                            
                                         
                        <tr>
                         <td class="tableCell leftCell">...</td>
@@ -155,8 +152,10 @@
                 <p style="text-align: center">Demonstration of how a sentence is decomposed into a <b>left</b> and <b>right</b> until  atomics are reached. The result is returned and concatenated with parentheses and operator.</p>
                 <div class="col-12">
                     <img class="img-fluid myImage" src="../imgs/wff/loops.png">
-                    
-                    While recursion is used to decompose and restore parentheses, it is insufficient. An iterative element is used to loop through each connective to treat it as the "major connective".
+                    <p style="text-align: center">
+                          While recursion is used to decompose and restore parentheses, it is insufficient. An iterative element is used to loop through each connective to treat it as the "major connective".
+                    </p>
+              
                     <img class="img-fluid myImage" src="../imgs/wff/3place.png">
                     <p style="text-align: center">Together, they are able to cycle through all of the operators, decomposing each into a left and right and reconstructing them as well-formed formulas.</p>
                 </div>
@@ -248,7 +247,7 @@ def rec(wff):
             <h4> Testing on my homework </h4>
             <div class="row">
                 <div class="col-md-6">
-                <img class="img-fluid myImage" src="../imgs/wff/homework.jpg">
+                <img class="img-fluid myImage padding" src="../imgs/wff/homework.jpg">
                      
                 </div>
                 <div class="col-md-6">
@@ -282,14 +281,112 @@ All possible well-formed formulas:
             <div class="col-12" style="text-align: center">While not in the same order, the algorithm produced the correct result.</div>
             </div>
             
-            <h4> Finding a non-recursive formula / approximation</h4>
-            
+            <h4> Findings </h4>
+            <p style="text-align: center"><u>WFF Possibilities From 2-place Operators</u> </p>
+            <div class="row"> 
+                
+                <div class="col-md-3">
+                    
+                    <table class="padding" style="width:100%">
+                          <tr>
+                            <th style="text-align: center; color: #e5eefc; background-color: black; ">Operators</th>
+                            <th style="text-align: center; color: #e5eefc; background-color: black">WFFs<br> Possible</th> 
+
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center;border-right: 1px solid black">0</td>
+                            <td class="tableCellSm"style="text-align: center">1</td>
+
+
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm" style="text-align: center; border-right: 1px solid black">1</td>
+                            <td class="tableCellSm"style="text-align: center">1</td> 
+
+                          </tr>
+
+                           <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">2</td>
+                            <td class="tableCellSm"style="text-align: center">2</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">3</td>
+                            <td class="tableCellSm"style="text-align: center">5</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">4</td>
+                            <td class="tableCellSm"style="text-align: center">14</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">5</td>
+                            <td class="tableCellSm"style="text-align: center">42</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">6</td>
+                            <td class="tableCellSm"style="text-align: center">132</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">7</td>
+                            <td class="tableCellSm"style="text-align: center">429</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">8</td>
+                            <td class="tableCellSm"style="text-align: center">1430</td> 
+                          </tr>
+                          <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">9</td>
+                            <td class="tableCellSm"style="text-align: center">4862</td> 
+                          </tr>
+                                <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">10</td>
+                            <td class="tableCellSm"style="text-align: center">16796</td> 
+                          </tr>
+                                <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">11</td>
+                            <td class="tableCellSm"style="text-align: center">58786</td> 
+                          </tr>
+                                <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">12</td>
+                            <td class="tableCellSm"style="text-align: center">208012</td> 
+                          </tr>
+                            <tr>
+                            <td class="tableCellSm"style="text-align: center; border-right: 1px solid black">...</td>
+                            <td class="tableCellSm"style="text-align: center">...</td> 
+                          </tr>
+                        
+                    </table>
+                </div>
+                <div class="col-md-9"> 
+                    <img class="img-fluid myImage" src="../imgs/wff/wffTable.PNG">
+                </div>
             </div>
             
+            <p> After looking up this sequence, I found that it was called the Catalan Numbers. These numbers come up in counting problems such as "the number of possible Binary Search Trees with n keys" or "the number of ways an $n$-gon can be divided into $n-2$ traingles". From this project, I found out that they also apply to the number of ways parentheses can be restored to logical sentences with 2-place connectives. </p>
+            
+            
+            <div class="row">
+                <div class="col-12">
+                    <h4>Further Research</h4>
+                    <p>
+                        <ul>
+                            <li>Make algorithm more efficient, using dynamic programming and, potentially, non-recursive approaches</li>
+                            <li>Figure out the mathematical relationship between $n$ and $m$-place connectives.</li>
+                    
+                        </ul>
+                    </p>
+                </div>
+            </div>
+              <div class="row pb-3 frame" style="background-color: #303030; margin-top: 10px">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: table; margin: auto;">
+                    <div style="padding-top: 25px">
+                       <a href="https://github.com/victortaksheyev/wffAlgorithm"><button class="btn btn-outline-light siteLink">View Code</button></a>
+                    </div>
+
+                </div>
             
             
             
-            <h1 class="bold center">In proggress</h1>
+            
 
         </div>
     </body>

@@ -31,20 +31,21 @@ darkB   #29648A
 .centerTable {
     width: 100%;
     margin: auto;
+    
 }
 
 .leftCell {
-    border-left: 2px solid black;
+    border-left: 1px solid black;
 }
 
 .rightCell {
-    border-right: 2px solid black;
+    border-right: 1px solid black;
 }
 
 
 .tableCellBottom {
     text-align: center;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     padding: 15px;
     
 } 
@@ -56,11 +57,23 @@ darkB   #29648A
     
 }
 
+.tableCellSm {
+    text-align: center;
+    border-bottom: 1px dashed #cccccc; 
+    padding: 2px;
+}
+
+
 @media (max-width: 560px) {
     .centerTable {
         width: 100%; !important
         margin: auto;
     }
+    .largeTable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
 
     
 }
