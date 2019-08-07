@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Victor's Portfolio</title>
          <link rel="stylesheet" type="text/css" href="css/style.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       
 
     </head>
@@ -18,7 +19,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="js/js.js"></script>
-        
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script> <!-- typed js -->
+
         <div class="container-fluid" style="max-width:1350px;">
            <div style="width=100%; height: 100%; margin-bottom: 50px;"> 
             <nav class="navbar navbar-expand-lg navbar-light navMid">
@@ -42,11 +44,11 @@
               
             </nav>
             
-            <input onkeyup="search()" id="searchBox" placeholder="search mechanism">
+            <input onkeyup="search()" id="searchBox" >
             </div>
             <div id="homeCenter" class="row pb-3">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
-                        <span class="metadata">apple,banana,pinecone</span>   
+                        <span class="metadata">quartus,hardware,fpga,waveform,simulation,de0,cpe,computer,engineering,display,lfsr,schematic,logic,sequential,gates,bit,bits,competition,team,teamwork,collaboration</span>   
                         <a href="pages/remembit.html">
                            <div class="imgFrame topSpace">
                                 <img class="card-img-top " src="imgs/remembit.jpg" alt="Card image cap">
@@ -58,6 +60,7 @@
                     </div>
     
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                        <span class="metadata">software,python,pydub,pysfx,waveform,algorithm,compression,Audacity,teamwork,team,collaboration</span>  
                         <a href="pages/audio.html">
                            <div class="imgFrame topSpace">
                               <img class="card-img-top" src="imgs/audio.jpg" alt="Card image cap">
@@ -69,6 +72,7 @@
                     </div>
                 
                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                        <span class="metadata">software,html,css,js,javascript,web,development,web development,graphics,graphics design,design,template,team,teamwork,frame</span>  
                         <a href="pages/frame.html">
                            <div class="imgFrame topSpace">
                                 <img class="card-img-top" src="imgs/frame.JPG" alt="Card image cap">
@@ -79,6 +83,8 @@
                     </div>
             
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                        <span class="metadata">python,matplotlib,spyder,arduino,hardware,engineering,rocketry,data,data analytics,visualizer,real-time,telemetry</span>  
+
                         <a href="pages/telemetry.html">
                            <div class="imgFrame topSpace">
                                 <img class="card-img-top" src="imgs/telemetry.PNG" alt="Card image cap">
@@ -89,6 +95,7 @@
                     </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame" >
+                    <span class="metadata">data,data analytics,analytics,regression,python,random forest,svr,decision tree,algorithm,visualizer</span>  
                     <a href="pages/data.html">
                         <div class="imgFrame topSpace">
                             <img class="card-img-top " src="imgs/data.png" alt="Card image cap">
@@ -99,6 +106,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame" >
+                    <span class="metadata">c++,c,engineering,hardware,rocketry,teamwork,team,payload,infaltion,seds,arduino,sparkfun,sensors,servoautonomous,redundancy,mars,inflate</span>  
                     <a href="pages/payload.html">
                         <div class="imgFrame topSpace">
                             <img class="card-img-top " src="imgs/payload.JPG" alt="Card image cap">
@@ -110,20 +118,22 @@
               
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                    <span class="metadata">javascript,js,machine,machine learning,segment,hardware,team,teamwork,teamsserial,neural,neural net,visualizer,visualize</span>  
                     <a href="pages/segDisplay.html">
                         <div class="imgFrame topSpace">
                             <img class="card-img-top " src="imgs/7seg.png" alt="Card image cap">
-                                <p class="imgFrameTxt"> A life-size 7-segment display visualizes the output of 2 artificial nueral networks</p>     
+                            <p class="imgFrameTxt"> A life-size 7-segment display visualizes the output of 2 artificial nueral networks</p>     
                         </div>
                         <span class="coverText">Neural Net <strong class="emph">Visualizer </strong> </span>    
                     </a>
                 </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame" >
+                    <span class="metadata">python,logic,algorithm,binary trees,data structures,combinatorics,mathematical modeling,wff,catalan,recursion,recursive,research,modeling</span>  
                     <a href="pages/wff.html">
                         <div class="imgFrame topSpace">
                             <img class="card-img-top " src="imgs/wff.png" alt="Card image cap">
-                                <p class="imgFrameTxt"> Algorithm for restoring parentheses in sentential logic sentences to turn them into well-formed formulas (WFFs) </p>     
+                            <p class="imgFrameTxt"> Algorithm for restoring parentheses in sentential logic sentences to turn them into well-formed formulas (WFFs) </p>     
                         </div>
                         <span class="coverText">Well-formed Formula <strong class="emph">algorithm </strong> </span>    
                     </a>
@@ -140,3 +150,16 @@
 
  
 </html>
+
+<script>
+
+var typed = new Typed('#searchBox', {
+    strings: ["algorithms", "rocketry", "python", "analytics", "engineering", "web development", "arduino", "data", "hardware"],
+    typeSpeed: 80,
+    backSpeed: 40,
+    attr: 'placeholder',
+    loop: true,
+  });
+
+
+</script>
