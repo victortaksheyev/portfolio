@@ -7,11 +7,87 @@ red for highlights: #AE1902
 
 */
 
+
+     
+      
+/* Social media buttons */
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+ul {
+    padding:0;
+    list-style: none;
+}
+.footer-social-icons {
+    width: 350px;
+    display:block;
+    margin: 0 auto;
+}
+.social-icon {
+    color: #fff;
+}
+ul.social-icons {
+    margin-top: 10px;
+}
+.social-icons li {
+    vertical-align: top;
+    display: inline;
+    height: 100px;
+}
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+}
+.fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: black;
+}
+.fa-facebook:hover {
+    background-color: #3d5b99;
+}
+.fa-twitter {
+    padding:10px 12px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: black;
+}
+.fa-twitter:hover {
+    background-color: #00aced;
+}
+
+.fa-youtube {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: black;
+}
+.fa-youtube:hover {
+    background-color: #e64a41;
+}
+
+
+
 .redButton {
     background-color: #AE1902!important;
     border: none!important;
 }
 
+.headerMainText {
+    color: white;
+    text-align: center;
+    font-size: 4em;
+}
 
 .centered {
   position: absolute;
@@ -20,11 +96,53 @@ red for highlights: #AE1902
   transform: translate(-50%, -50%);
 }
 
+.underline{
+    text-decoration: underline;
+    padding-bottom: 10px;
+}
+
 .navbar-dark {
   background-color:red;
   background-image: none;
   background-repeat: no-repeat;
  }
+
+.contactText {
+    padding-top: 20px;
+    color: #616161;
+}
+
+.nav-item::after  {
+/*    border-bottom: 1px solid white!important;*/
+}
+
+.currentLink {
+    border-bottom: 1px solid blue;
+}
+
+
+.hero {
+  background-color: #fff;
+  background-image: url("imgs/aboutImage.JPG");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+/*  // height: 75vh; // Specify a height to push the hero open, or...*/
+}
+
+.heroContact {
+  background-color: #fff;
+  background-image: url("imgs/contact/header.JPG");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+/*  // height: 75vh; // Specify a height to push the hero open, or...*/
+}
+
+.hero__content {
+  padding: 5rem 3rem 15rem 3rem; 
+  text-align: left;
+}
 
 
 .title {
@@ -37,14 +155,54 @@ red for highlights: #AE1902
     background-color: black;
 }
 
+.middleHeader {
+    text-align: center;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+
+.tableBorderRight {
+    border-right: 1px dashed gray;
+}
+
+.tableBorderLeft {
+    border-left: 1px dashed gray;
+}
+
+.bolded {
+    font-weight: 300;
+}
+
+
+/*Override padding of bootstrap elements*/
+.noRightPaddingMargin {
+    padding-right: 0px!important;
+    margin-right: 0px!important;
+}
+
+
+.noLeftPaddingMargin {
+    padding-left: 0px!important;
+    margin-left: 0px!important;
+}
 
 .mainSiteContainer {
-    
-    
     width: 80%; 
     margin: auto;
     left: 10%; 
     background-color: #FFCC00; 
+}
+
+.galleryPadding {
+    padding: 10px;
 }
 
 
@@ -126,6 +284,11 @@ li {
   }
 }
 
+.liOnWhite {
+    color: black;
+    text-decoration: none;
+}
+
 
 .masthead .entry-subtitle {
   
@@ -186,3 +349,106 @@ li {
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+
+
+
+
+
+
+.galImg {
+  
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.galImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* Caption of Modal Image */
+.caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 1000px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+
+
+.officerTitle {
+    font-size: .9em;
+    color:#AE1902;
+}
+
+
+
+
