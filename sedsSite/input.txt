@@ -1,7 +1,0 @@
-title: LoveShip 10k solid rocket
-subtitle: A rocket that flew to 8k feet at SpacePort Compj as;kldjflk;asjdlk;fj l;asjdl;kfj sl;ak jd;fljakls;dj flk;sajdkl;fjaslk;dfjals;kdjfl;kjsadkl;fjals;kdjfl;ksajdlfk;jsalkdfjlks;adjflk;sajdfl;kajsdl;fjasl;dkfjlas;dj
-picture: seds_loveship.png
-description: lksadjflkjsadkfjkldfasdfas
-...
-
-": A rocket that flew to 8k feet at SpacePort Compj as;kldjflk;asjdlk;fj l;asjdl;kfj sl;ak jd;fljakls;dj flk;sajdkl;fjaslk;dfjals;kdjfl;kjsadkl;fjals;kdjfl;ksajdlfk;jsalkdfjlks;adjflk;sajdfl;kajsdl;fjasl;dkfjlas;dj"
