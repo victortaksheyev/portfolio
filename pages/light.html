@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+       
+              
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Goodnight Light</title>
+         <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    </head>
+
+    <body>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <div class="container-fluid" style="max-width: 900px">
+             <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="../index.html"><h1 class="navbar-brand my_custom  sbold">Victor Taksheyev</h1></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Projects <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../imgs/extras/victorResume.pdf">Resume</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            
+            <div class="jumbotron" style="background-color: #303030">
+                <h1 class="display-4 bold inline" style="color:white;">Goodnight Light</h1><a href="https://github.com/victortaksheyev/wffAlgorithm"></a>
+                <p class="lead" style="color: #e5eefc">Project that sends my girlfriend a goodnight message while we were separated over the summer </p>
+                <hr class="my-4" style="background-color:#e5eefc">
+                <p style="color: #e5eefc"> <span style="color: #F2C48D">Key concepts/tech used:</span> ESP8266, web server, hardware-web communication, PCB <br>
+            </div>
+                    <h3>The Idea</h3>
+                    <div class="row">
+                        <div class="col">
+                            <img width="70%" class="img-fluid myImage" src="../imgs/light/selfie.jpg">
+                            <p>
+                                My girlfriend and I always send each other a goodnight text. Over the summer we would be separated because our internships were
+                                in different locations, so I wanted to make a physical "goodnight" sender.
+                            </p>
+                        </div>
+                    </div>    
+                    <h3>Establishing the Communication</h3>
+
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/rcigxEdrhEU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+
+                    <h5>POST and GET</h5>
+                    <p>The ESP8266 is a Wi-Fi microchip, allowing the communication between the hardware devices to be made through a web server 
+                        using GET and POST requests</p>
+
+                    <h5>Web-Server API</h5>
+                    <p>
+                        The server is set up as an API which stores the binary value of my light and my girlfriend's light. It is hosted on
+                        a public endpoint and is able to change those values once it receives the commands from the hardware. The server sends out the updated 
+                        values when GET requests are made. This was developed using Flask and python.
+                    </p>
+
+                    <h5>Interrupts</h5>
+                    <p>Each of the microcontrollers are making GET requests in a loop. To ensure that the button press is reliably recorded, I programmed
+                        the button presses using interrupts.  This allows for the button presses (which have the highest priority)
+                        to be properly handled.
+                    </p>
+
+                    <h3> Developing the Hardware </h3>
+                    <p> After the circuit worked on a breadboard, I converted it into a PCB to be printed as a presentable gift.
+                        Afterwards, everything was soldered into place.
+                    </p>
+
+                    <div class="row">
+                        <img width="70%" class="img-fluid myImage" src="../imgs/light/pcb_making.JPG">
+                    </div>
+
+                    <div class="row">
+                        <img width="70%" class="img-fluid myImage" src="../imgs/light/soldering.JPG">
+                    </div>
+
+                    <div class="row">
+                        <img width="70%" class="img-fluid myImage" src="../imgs/light/finished.JPG">
+                    </div>
+
+                    
+        
+            <div class="row">
+                <div class="col-12">
+                    
+                    <p class="center">
+                        After connecting to Wi-Fi, the GoodnightLight kept my girlfriend and I company even though we were hundreds of miles apart. =]
+                    </p>
+                </div>
+            </div>
+              <div class="row pb-3 frame" style="background-color: #303030; margin-top: 10px">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: table; margin: auto;">
+                    <div style="padding-top: 25px; color:white">
+                       victortaksheyev@gmail.com
+                    </div>
+
+                </div>
+            
+            
+            
+            
+
+        </div>
+    </body>
+</html>
