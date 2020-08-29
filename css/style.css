@@ -107,6 +107,12 @@ darkB   #29648A
     color: #476aa3;
 }
 
+.codeInsert {
+    background-color: #303030;
+    color: white;
+
+}
+
 .noPadding{
 /*    padding:0px!important;*/
     margin: 0px!important;
@@ -121,7 +127,6 @@ darkB   #29648A
 
 .consoleBlock {
     background-color: #303030;
-    height: 100%;
     padding: 20px 20px 0px 20px;
 }
 
