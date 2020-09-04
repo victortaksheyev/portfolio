@@ -113,6 +113,11 @@ darkB   #29648A
 
 }
 
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
 .noPadding{
 /*    padding:0px!important;*/
     margin: 0px!important;
