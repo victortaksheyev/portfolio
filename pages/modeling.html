@@ -46,7 +46,7 @@
             <h1>Models</h1>
 
 
-            <h4>RL-Circuit Differential Equation Model</h4>
+            <h4>#1 RL-Circuit Differential Equation Model</h4>
             <br>
             <div class="row col">
           
@@ -75,15 +75,101 @@
                     <h6>Using the Initial Condition to Obtain Particular Solution</h6>
                     <p style="text-align: center">`I(t) = 48/11(1+frac{1}{e^(110t)}) `  </p>
 
-                    
-
-
-
-
-
-
                 </div>
             </div>
+
+            <hr>
+            <h4>#2 RLC-Second Order Ciruit Model</h4>
+            <br>
+            <div class="row col">
+                <div class="col-sm-12 col-md-8 col-centered" >
+                    <img class="img-fluid " src="../imgs/modeling/2ndOrder.png">
+                </div>
+                
+            </div>
+
+            <div class="row">
+                    
+                    <div class="col">
+                        <p>Question: Determine `V_{c}(t) for R = 300, 200, 100 \Omega `</p>
+
+                        <h6>Apply KVL</h6>
+                        <p style="text-align: center">`L\frac{di(t)}{dt} + Ri(t) + V_{c} = V_{s}` </p>
+                        <h6>We're looking for `V_{c}`, so substite with `i(t) = C \frac{dV_{c}}{dt}`</h6>
+                        <p style="text-align: center">`LC\frac{d^2V_c}{dt} + RC\frac{dV_c}{dt} + V_{c} = V_{s}` </p>
+                        <h6>Simplify into General Linear 2nd Order ODE</h6>
+                        <p style="text-align: center">`\frac{d^2V_c}{dt^2} + R/L\frac{dV_c}{dt} + 1/(LC)V_{c} = 1/(LC)V_{s}` </p>
+                        <p style="text-align: center">`\frac{d^2x(t)}{dt^2} + 2\alpha \frac{dx(t)}{dt} + \omega_0^2 x(t) = f(t)` </p>
+
+                        <p style="text-align: center">dampening coefficient `\alpha = R/(2L)`  </p>
+                        <p style="text-align: center">undamped resonant frequency `omega_0 = 1/\sqrt(LC)`</p>
+
+                        <h6>Solve Particular Solution</h6>
+                        <img class="img-fluid center" src="../imgs/modeling/2ndOrder_simplified.png">
+                        <p class="centerText">Simplified circuit in steady state</p>
+                        <p style="text-align: center">`V_{c_p}(t) = V_s = 10V` </p>
+                        <p style="text-align: center">`\omega_0 = 1/\sqrt(LC) = 10^4` (same for all values of R)</p>
+                        <h6 style="color: red">Case 1 (300 `\Omega`):</h6>
+                        <p style="text-align: center">`\omega_0 = 10^4` </p>
+                        <p style="text-align: center">`\alpha = R/(2L) = 1.5*10^4` </p>
+                        <p style="text-align: center">`\zeta = \alpha / \omega = 1.5` (overdamped case) </p>
+                        <p style="text-align: center">`s_1 = -\alpha + \sqrt(\alpha^2 - \omega_0^2) = -0.3820*10^4 ` </p>
+                        <p style="text-align: center">`s_2 = -\alpha - \sqrt(\alpha^2 - \omega_0^2) = -2.618*10^4 ` </p>
+                        <h6>Solving General Solution:</h6>
+                        <p style="text-align: center">`V_c(t) = 10 + K_1e^(s_1t) + K_2e^(s_2t)` (combining homogenous and particular solutions) </p>
+                        <p style="text-align: center">`10 + K_1 + K_2 = 0` (evaluating at t=0) </p>
+                        <p style="text-align: center">`0 = s_1K_1 + s_2K_2` (taking derivative at 0) </p>
+                        <p style="text-align: center">`V_c(t) = 10 - 11.708e^(s_1t) + 1.708e^(s_2t)` </p>
+                        <img class="img-fluid center" width = "70%" src="../imgs/modeling/overdamped.png">
+                        <p style="text-align: center">Overdamped voltage response </p>
+
+                        <h6 style="color: red">Case 2 (R = 200 `\Omega`):</h6>
+                        <p style="text-align: center">`\omega_0 = 10^4` </p>
+                        <p style="text-align: center">`\alpha = R/(2L) = 10*10^4` </p>
+                        <p style="text-align: center">`\zeta = \alpha / \omega = 1` (critically damp) </p>
+                        <p style="text-align: center">`s_1 = -\alpha + \sqrt(\alpha^2 - \omega_0^2) = -10^4 ` </p>
+                        <h6>Solving General Solution:</h6>
+                        <p style="text-align: center">`V_c(t) = 10 + K_1e^(s_1t) + K_2te^(s_1t)` (combining homogenous and particular solutions) </p>
+                        <p style="text-align: center">`10 + K_1 = 0` (evaluating at t=0) </p>
+                        <p style="text-align: center">`s_1K_1 + K_2 = 0` (taking derivative at t=0) </p>
+                        <p style="text-align: center">`V_c(t) = 10 - 10e^(s_1t) + 10^5te^(s_1t)` </p>
+                        <img class="img-fluid center" width = "70%" src="../imgs/modeling/critically.png">
+                        <p style="text-align: center">Critically damped voltage response </p>
+
+                        <h6 style="color: red">Case 3 (R = 100 `\Omega`):</h6>
+                        <p style="text-align: center">`\omega_0 = 10^4` </p>
+                        <p style="text-align: center">`\alpha = R/(2L) = 5000` </p>
+                        <p style="text-align: center">`\zeta = \alpha / \omega = 0.5` (undedamped) </p>
+                        <p style="text-align: center">`\omega_n = \sqrt(\omega_0^2 - \alpha^2) = 8660` </p>
+                        <h6>Solving General Solution:</h6>
+                        <p style="text-align: center">`V_c(t) = 10 + K_1e^(\alpha t)cos(\omega_nt) + K_2te^(\alpha t)sin(\omega_n t)` (combining homogenous and particular solutions) </p>
+                        <p style="text-align: center">`0 = 10 + K_1` (evaluating at t=0) </p>
+                        <p style="text-align: center">`-aK_1 + \omega_nK_2 = 0` (taking derivative at t=0) </p>
+                        <p style="text-align: center">`V_c(t) = 10 - 10e^(\alpha t)cos(\omega_nt) + -5.774te^(\alpha t)sin(\omega_n t)` </p>
+                        <img class="img-fluid center" width = "70%" src="../imgs/modeling/underdamped.png">
+                        <p style="text-align: center">Underdamped voltage response </p>
+
+
+
+
+
+
+
+
+                        
+
+
+
+
+                        
+
+                        
+                        
+            
+    
+                    </div>
+                </div>
+                <hr>
             <br>
             <br><br><br><br>
 
