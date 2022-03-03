@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+              
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>GLDRR</title>
+         <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <div class="container-fluid" style="max-width: 900px">
+             <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="../index.html"><h1 class="navbar-brand my_custom sbold">Victor Taksheyev</h1></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Projects <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../imgs/extras/victorResume.pdf">Resume</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+                <div class="jumbotron" style="background-color: black">
+                    <h1 class="display-4 bold" style="color:white; display: inline;">GLDRR</h1> 
+                    <!-- <a href="http://frame.co.com/"><button style="margin-bottom:20px; margin-left: 20px" type="button" class="btn btn-outline-light">View Site</button></a> -->
+                    <p class="lead" style="color: #e5eefc">Guided Landing Drogue for Rocket Recovery (GLDRR) is a system to autonomously navigate payloads to desired locations.</p>
+                    <hr class="my-4" style="background-color:#e5eefc">
+                    <p style="color: #e5eefc"> <span style="color: #29648A">Technologies:</span> PCB, electronics, sensors, controls, rocketry </p>
+                </div>
+            
+            <div class="row pb-3">
+                <h1>Overview</h1>
+            </div>
+            <div class="row pb-3 frame">
+                
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/similar_system.png">
+                        <p><b>Figure 1: Similar system -<a href="https://stratocat.com.ar/fichas-e/2019/STJ-20190922.htm"> GPHAR II</a></b></p>
+                </div>
+                <p style="text-align: left;">
+                    The objective of GLDRR is to design, build, and test a system that can autonomously guide a rocket from apogee down to predetermined GPS coordinates before deploying a larger main parachute to bring the rocket’s descent rate down to safe levels. 
+                    Traditional rocket recovery methods (single, dual deployment, and GPS systems) are insufficient as rockets reach higher altitudes and are prone to a myriad of problems that complicate recovery operations. 
+                    GLDRR seeks to alleviate these problems. 
+                    The current design developed over the course of this semester consists of a parafoil, two winch servos, a microcontroller, GPS sensor, and LiPo batteries mounted on a 3D printed electronics sled which is housed in a commonly used coupler/avionics bay form factor. 
+                    The microcontroller will take input from the GPS sensor and use the winch servos to guide and control the heading of the rocket throughout its descent. 
+                    <br>
+                    <br>
+                    I worked on a team with two other students and my roles were to design/build the electronics, software, and portions of the control algorithm.
+                </p>
+            </div>
+
+            <div class="row pb-3">
+                <h1>Overall Design</h1>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/avionics_bay.png">
+                    <p style="text-align:center"><b>Figure 2: Avionics Bay CAD - Multiple Views</b></p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/electronics.png">
+                    <p style="text-align:center"><b>Figure 3: Avionics Bay CAD - Exploded View</b></p>
+                </div>
+            </div>
+                
+            <div class="row pb-3">
+                <h1>Electronics Design</h1>
+            </div>
+            <div class="row pb-3 frame">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/electronics_schematic.png">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                        <p style="text-align:center"><b>Figure 3: GLDRR Electronics Overview</b></p>
+                    </div>
+                    <p style="text-align: left;">
+                        GLDRR's control algorithm relies on an accelerometer, GPS, and altimeter. These sensors feed data into the microcontroller over the I2C interface.
+                        The microcontroller uses the sensor inputs for a control algorithm. Following a computation cycle, it outputs a command to the two servos attached to the parafoil shrouds.
+                        There are also cameras which will record the flight for post-processing. The microcontroller, sensors, servos, and camera require different voltages.
+                        Therefore, the last part of the electrical system is a power distribution sub-circuit to provide the necessary voltages.
+                    </p>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/power_regulator.png">
+                        <p style="text-align:center"><b>Figure 4: GLDRR Electronics Overview</b></p>
+                        <p style="text-align: left;">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                        <p style="text-align: left;">The microcontroller has an embedded voltage regulator; however, a voltage regulator was needed for the servos which operate between 4-6V.
+                        To do this, the 2S LiPo input would be passed through the LM2596 step-dowm voltage regulator to produce a steady 5V power supply. </p>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/camera_circuit.png">
+                        <p style="text-align:center"><b>Figure 5: Camera Circuit</b></p>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                        <p style="text-align: left;">In order to conserve onboard memory and power, the team would like to start the cameras autonomously when the rocket lifts off.
+                        This can be detected using the accelerometer and a signal could be sent from the microcontroller once such an event occurs. As a result, the two onboard
+                        cameras are connected to MOSFET transistors which will be able to supply appropriate power (from the LiPO) once a launch event is detected.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/PCB_design.png">
+                        <p style="text-align:center"><b>Figure 6: PCB Design</b></p>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                        <p style="text-align: left;">
+                            A circular PCB was chosen to maximize the area. The PCB will be sledded into the avionics bay shown in Figure 2.
+                        </p>
+                    </div>
+                   
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/3d-view-green.png">
+                        <p style="text-align:center"><b>Figure 7: 3D View of PCB</b></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/ordered_pcbs.png">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/pcb_soldered.png">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: block; margin:auto;">
+                        <p style="text-align:center"><b>Figure 8: PCBs before and after soldering</b></p>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12s col-lg-12" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/pcb_testing.png">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: block; margin:auto;">
+                        <p style="text-align:center"><b>Figure 9: Testing Voltage Regulator Circuit</b></p>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12s col-lg-12" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/pcb_connected.png">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: block; margin:auto;">
+                        <p style="text-align:center"><b>Figure 10: Fully Integrated Test</b></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                        <p style="text-align: left;">
+                            Most recently a fully integrated test of all PCB electronics was performed and all were operating properly. 
+                            Data was read from all sensors using the I2C interface, the transistor switches were able to be enabled, and the servo controller was working properly.
+                        </p>
+                    </div>
+                </div>
+            
+            <div class="row pb-3">
+                <h1>Next Steps</h1>
+            </div>
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/control_algorithm_high_level_1.png">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/control_algorithm_high_level.png">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/control_algorithm_high_level_landing.png">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12" style="display: block; margin:auto;">
+                    <p style="text-align:center"><b>Figure 11: High Level Control Algorithm</b></p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p style="text-align: left;">
+                        Following the implementation of the control algorithm, testing will be done on a drone (simulating a rocket flight) and then a fully integrated test on a rocket.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/GLDRR/rocket.png">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                        <p style="text-align:center"><b>Figure 10: Rocket That Will Launch GLDRR</b></p>
+                </div>
+            </div>
+            <div class="row pb-3 frame" style="background-color: black">
+                <div style="display: block; margin: auto; margin-top: 10px">
+                    <!-- <a href="http://frame.co.com/"><button type="button" class="btn btn-outline-light">View Site </button></a> -->
+                    <!-- <a href="https://github.com/victortaksheyev/Frame"><button type="button" class="btn btn-outline-light">GitHub</button></a> -->
+                    <p style="color: white" style="center">victortaksheyev@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
