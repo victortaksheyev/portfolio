@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+              
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>MARTY</title>
+         <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <div class="container-fluid" style="max-width: 900px">
+             <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="../index.html"><h1 class="navbar-brand my_custom sbold">Victor Taksheyev</h1></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Projects <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../imgs/extras/victorResume.pdf">Resume</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+                <div class="jumbotron" style="background-color: #4a2d3b">
+                    <h1 class="display-4 bold" style="color:white; display: inline;">MARTy</h1> 
+                    <!-- <a href="http://frame.co.com/"><button style="margin-bottom:20px; margin-left: 20px" type="button" class="btn btn-outline-light">View Site</button></a> -->
+                    <p class="lead" style="color: #e5eefc">Martial Arts Robotic Trainer (MARTy) is a robotic sparring partner that fights back!</p>
+                    <hr class="my-4" style="background-color:#e5eefc">
+                    <p style="color: #e5eefc"> <span style="color: #86c6eb">Technologies:</span> CAD, 3D Printing, Electronics, computer vision, Raspberry Pi, woodworking</p>
+                </div>
+            
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                <h1>Overview</h1>
+            </div>
+            </div>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                        <img width="100%" class="img-fluid myImage" src="../imgs/marty/front_view.png">
+                        <p><b>Figure 1: Front view of the robot</b></p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p style="text-align:left">
+                        MARTy was a fun personal project I thought of to make over winter break. It taught me a lot about CAD, robotics, and interdisciplinary engineering.
+                        The robot is able to punch from 6 different angles and rotate along its base to track a sparring partner's motion and always appear in front of them while they're sparring.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3 ">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Mechanical</h1>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/G7x7K_nqK5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p><b>Figure 2: MARTy CAD</b></p>
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>The robot consists of a perforated metal pole as its base (spine). Onto that base, a combination of wooden and 3D-printed PLA elements were attached.
+                        The robot's shoulders are wooden for ease of prototyping. They are fixed to the metal pole with L-brackets. Servos for the arms are screwed into the wooden shoulders.
+                        The head is attached using a 3D-printed spring attachement.
+                        Finally, the pole is attached to a 3D-printed bearing plate that sits on a metal bearing. This allows the robot to spin and track its sparring partner.
+                        The bearing plate is designed as a large gear. A motor is connected to the gear using a belt pulley.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/3dprinting.png">
+                    <p style="text-align:center"><b>Figure 3: Bearing Plate Being Printed</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>
+                        The pulley being used to connect the motor to the bearing is a GT2 specification. To ensure the gear would work with the pulley, it was modeled using the following GT2 guide:
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/gt2_pulley.jpeg">
+                    <p style="text-align:center"><b>Figure 4: GT2 Pulley Specification</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/base_box.png">
+                    <p style="text-align:center"><b>Figure 5: Base box</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p>
+                        My dad works with wood and helped me make the wooden base box to hold the robot and its supporting weights
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/bearing_drilling.png">
+                    <p style="text-align:center"><b>Figure 6: Drilling Holes to Attach to Wooden Base Plate</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Qg_2soTlQ3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p><b>Figure 7: Bearing on Base Plate</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/servo_connectors_slicer.png">
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/arm_connectors.png">
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12" style="display: block; margin:auto;">
+                    <p style="text-align:center"><b>Figure 8: 3D printed servo connectors</b></p>
+                </div>
+                
+            </div>
+
+
+            <div class="row pb-3 ">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Electronics</h1>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/wiring_dirty.jpg">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/wiring_clean.png">
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p><b>Figure 9: Wiring before and after cleanup</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    MARTy consists of 6 high-speed, high-torque servos for its punches.
+                    All of the servos are wired in parallel to ensure a sufficient voltage from the LiPo battery.
+                    2 servos will not punch at the same time, meaning there are no issues with current overdraw from the LiPo battery.
+                    Each servo is connected to a GPIO pin on the breadboard that sends a PWM signal to control the motor position.
+                    <br>
+                    <br>
+                    At max current draw, each servo is able to perform a punch in 0.16s.
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/kIjVMVrNRmY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p><b>Figure 10: MARTy punch test</b></p>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Software</h1>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p style="text-align: left;">
+                        There are two primary pieces of software on this project:
+                        <ul>
+                            <li>Object (facial) tracking</li>
+                            <li>Hardware controllers</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/camera.png">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/marty/face_detection_initial.png">
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p><b>Figure 11: Facial Tracking Using Camera</b></p>
+                </div>
+            </div>
+          
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p style="text-align: left;">
+                        The face detection algorithm identifies the largest visible face and determines the center of it. It then computes a position error between the center
+                        of the face and the center of the image. This error is fed to the motor controller which spins the motor in the correct location until the error is eliminated.
+                        Currently, only proportional control is used with a large acceptable margin, but upgrading to a PD controller will allow for quicker error response.
+                        A further upgrade to a PID controller will eliminate the need for an acceptable margin as it could eliminate steady state error.
+                        <br>
+                        <br>
+                        The face detection is based on a pre-trained Haar cascade classifier on frontal faces. I added optimizations to make it run faster on the Raspberry PI.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 frame" style="display: block; margin:auto;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/kv-0QHDB1-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p><b>Figure 12: Face Detection Computing Error From Center</b></p>
+                </div>
+            </div>
+
+         
+
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <p style="color: red">Add section about servo and motor code</p>
+                </div>
+            </div>
+
+            <div class="row pb-3 frame" style="background-color: #4a2d3b">
+                <div style="display: block; margin: auto; margin-top: 10px">
+                    <p style="color: white" style="center">victortaksheyev@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
