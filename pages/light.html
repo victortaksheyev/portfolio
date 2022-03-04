@@ -39,17 +39,16 @@
             
             <div class="jumbotron" style="background-color: #303030">
                 <h1 class="display-4 bold inline" style="color:white;">Goodnight Light</h1><a href="https://github.com/victortaksheyev/wffAlgorithm"></a>
-                <p class="lead" style="color: #e5eefc">Project that sends my girlfriend a goodnight message while we were separated over the summer </p>
+                <p class="lead" style="color: #e5eefc">Project to send physical goodnight messages over the web </p>
                 <hr class="my-4" style="background-color:#e5eefc">
                 <p style="color: #e5eefc"> <span style="color: #F2C48D">Key concepts/tech used:</span> ESP8266, web server, hardware-web communication, PCB <br>
             </div>
                     <h3>The Idea</h3>
                     <div class="row">
                         <div class="col">
-                            <img width="70%" class="img-fluid myImage" src="../imgs/light/selfie.jpg">
                             <p>
-                                My girlfriend and I always send each other a goodnight text. Over the summer we would be separated because our internships were
-                                in different locations, so I wanted to make a physical "goodnight" sender.
+                                Goodnight light was a way to send a more physical goodnight to people than what texting could offer. 
+                                This idea came to mind because a lot of people are separated by distance, especially during the time of the pandemic. 
                             </p>
                         </div>
                     </div>    
@@ -66,7 +65,7 @@
 
                     <h5>Web-Server API</h5>
                     <p>
-                        The server is set up as an API which stores the binary value of my light and my girlfriend's light. It is hosted on
+                        The server is set up as an API which stores the binary value of my light and the receiver's light. It is hosted on
                         a public endpoint and is able to change those values once it receives the commands from the hardware. The server sends out the updated 
                         values when GET requests are made. This was developed using Flask and python.
                     </p>
@@ -98,7 +97,7 @@
                 <div class="col-12">
                     
                     <p class="center">
-                        After connecting to Wi-Fi, the GoodnightLight kept my girlfriend and I company even though we were hundreds of miles apart. =]
+                        After both Goodnight Lights were connected to Wi-Fi, they were able to communicate with each other at any distance. It was awesome to see the communication work from two different states.
                     </p>
                 </div>
             </div>
