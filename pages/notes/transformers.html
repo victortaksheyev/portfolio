@@ -495,6 +495,10 @@
         font-size: 1.6rem;
       }
 
+      .embedded-figure--left img {
+        transform: none;
+      }
+
       pre {
         padding: 20px;
       }
@@ -749,7 +753,7 @@
         <div class="embedded-figure embedded-figure--narrow">
           <img src="../../imgs/notes/transformers/transformer.png" alt="Encoder-decoder transformer architecture from the transformer architecture paper." />
           <div class="figure-label">
-            <strong>Figure 4:</strong> Encoder-decoder transformer architecture from <em>Attention Is All You Need</em>, showing stacked encoder and decoder blocks connected by cross-attention.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
+            <strong>Figure 4:</strong> Encoder-decoder transformer architecture from <em>Attention Is All You Need</em>.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
           </div>
         </div>
 
@@ -930,6 +934,59 @@
 
           </div>
         </div>
+      </section>
+
+      <section id="tokenization">
+        <h2>Tokenization</h2>
+        <h3>Breaking Text into Tokens (todo)</h3>
+        <h3>Token IDs and Embeddings</h3>
+        <p>
+          After text is split into tokens, each token is mapped to an integer ID. That ID is then used as an index into a learned embedding table, returning the token's vector representation.
+        </p>
+        <div class="math-block">
+          <div class="math">
+            \[
+            x_i = E[t_i]
+            \]
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>tokens     -> ["small", "dog"]
+token IDs  -> [1834, 481]
+lookup     -> [E[1834], E[481]]</code></pre>
+        </div>
+        <div class="small-note">
+          Each token ID selects a row from the embedding matrix.
+        </div>
+        <p>
+          These vectors are learned numerical representations. Their direction in the embedding space can encode multiple overlapping pieces of meaning at once.
+        </p>
+
+        <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/embedding_directions_3d.png" alt="3D embedding visualization showing related words arranged with similar semantic directions." />
+          <div class="figure-label">
+            <strong>Figure 9:</strong> Token IDs map into vectors, and similar directions can reflect similar relationships.
+          </div>
+        </div>
+
+        <p>
+          The embedding lookup gives the model an initial vector. Attention layers described earlier can update that vector using context and shift it toward a more specific meaning.
+        </p>
+
+        <div class="embedded-figure embedded-figure--narrow">
+          <img src="../../imgs/notes/transformers/adjective_shift_diagram.png" alt="3D vector diagram showing a noun representation shifting toward a contextualized adjective-noun representation." />
+          <div class="figure-label">
+            <strong>Figure 10:</strong> Context + attention layers move a vector from <code>dog</code> toward <code>small dog</code>.
+          </div>
+        </div>
+      </section>
+
+      <section id="optimization">
+        <h2>Optimization (todo)</h2>
+        <h3>Training-Time Optimization</h3>
+        <p>talk about parallelism and memory/backprop, attention cost during training, encoding vectors into smaller dimensions</p>
+        <h3>Inference-Time Optimization</h3>
+        <p>talk about prefill/decode, kv cache, batching, quantization (encoding vectors)</p>
       </section>
 
       <section id="references">
