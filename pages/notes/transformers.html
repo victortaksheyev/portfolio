@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <title>Transformers | Victor Taksheyev</title>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #5a6472;
+      --card: #2a2a2a;
+      --card-text: #f8fafc;
+      --accent: #efb25a;
+      --line: rgba(255, 255, 255, 0.32);
+      --table-line: #d4d4d4;
+      --soft-line: #dcdcdc;
+      --code-bg: #f7f7f5;
+      --max-page: 980px;
+      --max-text: 860px;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .page {
+      max-width: var(--max-page);
+      margin: 0 auto;
+      padding: 24px 22px 0;
+    }
+
+    .notes-nav-shell {
+      max-width: var(--max-text);
+      margin: 0 auto 22px;
+    }
+
+    .notes-nav-shell .navbar {
+      padding: 0;
+    }
+
+    .notes-nav-shell .navbar-nav {
+      flex-wrap: wrap;
+    }
+
+    .notes-nav-shell .nav-link {
+      color: var(--text);
+    }
+
+    .notes-nav-shell .nav-link:hover {
+      color: #476aa3;
+    }
+
+    @media (min-width: 992px) {
+      .notes-nav-shell .navbar {
+        justify-content: center;
+      }
+
+      .notes-nav-shell .navbar-collapse {
+        flex-grow: 0;
+      }
+
+      .notes-nav-shell .navbar-brand {
+        margin-right: 1.5rem;
+      }
+
+      .notes-nav-shell .navbar-nav {
+        align-items: center;
+      }
+    }
+
+    .hero {
+      background: var(--card);
+      color: var(--card-text);
+      border-radius: var(--radius);
+      max-width: var(--max-text);
+      margin: 0 auto 34px;
+      padding: 30px 30px 34px;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 0 0 20px;
+      color: rgba(248, 250, 252, 0.9);
+      font-size: 1.05rem;
+    }
+
+    .hero-rule {
+      height: 1px;
+      background: var(--line);
+      margin: 20px 0 18px;
+    }
+
+    .hero-meta {
+      color: var(--accent);
+      font-size: 0.96rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-tags {
+      color: rgba(248, 250, 252, 0.82);
+      font-size: 0.97rem;
+    }
+
+    .content {
+      max-width: var(--max-text);
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 44px;
+    }
+
+    h2,
+    h3,
+    h4 {
+      margin: 0 0 14px;
+      color: #0f172a;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 24px;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+
+    p {
+      margin: 0 0 18px;
+      font-size: 0.96rem;
+    }
+
+    .example-list {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 24px;
+    }
+
+    .example-item {
+      padding-left: 14px;
+      border-left: 4px solid #d9d9d9;
+    }
+
+    .example-text {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.45;
+    }
+
+    .example-text code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.98em;
+    }
+
+    .example-note {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    ol,
+    ul {
+      margin: 0 0 20px 24px;
+      padding: 0;
+      font-size: 0.96rem;
+    }
+
+    li {
+      margin: 0 0 8px;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    .math {
+      text-align: center;
+      margin: 26px 0;
+      overflow-x: auto;
+      padding: 8px 0;
+    }
+
+    .math-block {
+      margin: 22px 0;
+    }
+
+    .math-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .math-pair .math-block {
+      margin: 10px 0;
+    }
+
+    .math-pair .math {
+      margin: 10px 0;
+    }
+
+    .figure {
+      margin: 28px 0 18px;
+      text-align: center;
+    }
+
+    .figure-box {
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed #bbbbbb;
+      background: rgba(255, 255, 255, 0.5);
+      color: #666;
+      padding: 26px;
+      border-radius: var(--radius);
+    }
+
+    .figure-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .embedded-figure {
+      margin: 20px 0 22px;
+      text-align: center;
+    }
+
+    .embedded-figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border: none;
+      border-radius: 0;
+    }
+
+    .embedded-figure--narrow img {
+      width: min(100%, 520px);
+      margin: 0 auto;
+    }
+
+    .embedded-figure--left img {
+      transform: translateX(-40px);
+    }
+
+    .figure-label {
+      margin-top: 10px;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .figure-label strong {
+      font-weight: 600;
+    }
+
+    .caption {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-top: 10px;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 24px;
+      margin-top: 14px;
+    }
+
+    .step-entry {
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .step-entry:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .step-entry p:last-of-type {
+      margin-bottom: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px;
+      background: transparent;
+      border-top: 1px solid var(--soft-line);
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    thead th {
+      background: #111111;
+      color: #ffffff;
+      padding: 11px 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    tbody td {
+      padding: 15px 14px;
+      border: 1px solid var(--table-line);
+      text-align: center;
+      vertical-align: middle;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    .ref-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82em;
+      vertical-align: super;
+      margin-left: 0.18em;
+    }
+
+    .ref-link:hover {
+      color: var(--text);
+    }
+
+    :not(pre) > code {
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid #d7d7d7;
+      color: #1f2937;
+      padding: 0.12em 0.38em;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+
+    pre {
+      margin: 0;
+      background: #fcfcfc;
+      padding: 24px;
+      border: 1px solid #e3e3e3;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-size: 0.94rem;
+      line-height: 1.55;
+      color: #1f2937;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      border: none;
+    }
+
+    .tok-keyword {
+      color: #7c3aed;
+    }
+
+    .tok-module {
+      color: #b45309;
+    }
+
+    .tok-function {
+      color: #2563eb;
+    }
+
+    .tok-variable {
+      color: #0f766e;
+    }
+
+    .tok-number {
+      color: #c2410c;
+    }
+
+    .tok-comment {
+      color: #6b7280;
+    }
+
+    .code-block {
+      margin-top: 18px;
+    }
+
+    .small-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 10px;
+    }
+
+    .references-list {
+      margin-left: 20px;
+    }
+
+    .references-list li {
+      color: var(--muted);
+      margin-bottom: 4px;
+      line-height: 1.45;
+    }
+
+    .references-list li:target {
+      color: var(--text);
+    }
+
+    .references-list a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .references-list a:hover {
+      border-color: currentColor;
+    }
+
+    .note-footer {
+      margin-top: 56px;
+      text-align: center;
+      padding-bottom: 28px;
+    }
+
+    .note-footer a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        font-size: 16px;
+      }
+
+      .page {
+        padding: 14px 14px 0;
+      }
+
+      .hero {
+        padding: 24px 20px 28px;
+        margin-bottom: 28px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      pre {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <main class="page">
+    <div class="notes-nav-shell">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="../../index.html"><h1 class="navbar-brand my_custom sbold">Victor Taksheyev</h1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">(college) projects</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="../notes.html">Notes <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="../../imgs/extras/victorResume.pdf">Resume</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="hero-top">
+        <h1>Transformers</h1>
+      </div>
+
+      <p class="hero-subtitle">
+       Attention, long-range dependencies, and next-token prediction in transformers.
+      </p>
+
+      <div class="hero-rule"></div>
+
+      <div class="hero-meta">Topics</div>
+      <div class="hero-tags">
+        self-attention, RNN comparison, vanishing gradients, decoder flow, logits, KV cache
+      </div>
+    </header>
+
+    <div class="content">
+      <section id="idea">
+        <h2>Overview</h2>
+        <p id="pipeline">
+          A transformer is a neural network architecture capable of efficiently forming relationships in sequential data. It does this using a mechanism called attention.
+        </p>
+
+        <p>
+          When processing some token, attention allows the model to consider how that token is affected by all other tokens in the model's context.
+        </p>
+
+        <p>
+          Language tasks are inherently sequential, yet often depend on relationships between distant pieces of text, making them a strong example of why attention is powerful.
+        </p>
+
+        <p>Consider the following text streams:</p>
+
+        <div class="example-list">
+          <div class="example-item">
+            <p class="example-text">"The capital of France is"</p>
+            <p class="example-note">
+              In this simple example, attention increases the weight of <code>capital</code>, <code>France</code>, and <code>is</code> to provide a higher likelihood of <code>Paris</code> being generated.
+            </p>
+          </div>
+
+          <div class="example-item">
+            <p class="example-text"><code>"def scale(values, factor):
+    return [v * factor for v in"</code></p>
+          <p class="example-note">
+            In code generation, attention helps connect back to earlier code context. In this case, the relationship between <code>v</code>, the loop structure, and the input <code>values</code>.
+          </p>
+          </div>
+        </div>
+
+        <h3>Before Attention</h3>
+        <p>
+          Before attention, models often relied on long chains of memory to pass information from earlier tokens to later ones. This is the core idea behind recurrent neural networks, where information is carried forward step by step through the sequence using hidden layers (h).
+        </p>
+
+        <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/rnn_vs_attention.svg" alt="Comparison of recurrent hidden-state processing and direct attention-based context lookup." />
+          <div class="figure-label">
+            <strong>Figure 1:</strong> Left: an RNN passes information through a chain of hidden states to reach the next-token prediction. Right: attention lets the current position connect directly to earlier relevant tokens.
+          </div>
+        </div>
+
+        <p>
+          It can be seen that in the unrolled recurrent neural network architecture, information must travel through potentially many hidden states which can result in dilution.
+        </p>
+          
+        <p>An example that highlights the problem more clearly:</p>
+
+        <div class="example-item">
+          <p class="example-text">
+            The capital of France, which I visited after spending three weeks traveling through Europe and reading about its history, is
+          </p>
+        </div>
+        <br>
+
+        <p>
+          In this case, the model needs to preserve the relevance of <code>France</code> across many intermediate hidden states.
+          As information is passed step by step, that signal weakens, making it difficult to encode the importance of that token. In turn, the model's prediction could become inaccurate - or, not as accurate as it would be if it maintained that relevance.
+        </p>
+
+        <p>
+          A related issue is that as sequential depth increases, the risk of vanishing gradients also grows, making training more difficult.
+        </p>
+
+        <p>
+          When a recurrent neural network is unrolled, as shown in the diagram above, these two issues become more apparent. It can be seen that the hidden state at a timestep t <code>h_t</code> is a function of all previous states. 
+        </p>
+
+        <div class="math-block">
+          <div class="math">
+            \[
+            h_t = \phi(W_{hh} h_{t-1} + W_{xh} x_t + b)
+            \]
+          </div>
+        </div>
+
+        <p>
+          Expanding the recurrence itself shows the same hidden-to-hidden matrix \(W_{hh}\) is reused at every timestep.
+        </p>
+
+      <div class="math-block">
+        <div class="math">
+          \[
+          h_t = \phi(W_{hh}\,\phi(W_{hh}\,\phi(\cdots W_{hh} h_0 \cdots)))
+          \]
+        </div>
+
+      <p>
+        During the forward pass, information from the initial hidden state <code>h_0</code> can become progressively diluted as it is transformed through many repeated applications of the recurrence.
+      </p>
+
+      </div>
+      <p>
+        During the backwards pass, this same repeated matrix can make training less effective.
+        Since \(W_{hh}\) is reused at every timestep, the backward pass must repeatedly differentiate through it,
+        which can cause the gradient signal to become very small.
+      </p>
+
+        <div class="math-pair">
+          <div class="math-block">
+            <div class="math">
+              \[
+              \frac{\partial L}{\partial h_{t-k}}
+              =
+              \frac{\partial L}{\partial h_t}
+              \cdot
+              \frac{\partial h_t}{\partial h_{t-1}}
+              \cdot
+              \frac{\partial h_{t-1}}{\partial h_{t-2}}
+              \cdots
+              \frac{\partial h_{t-k+1}}{\partial h_{t-k}}
+              \]
+            </div>
+          </div>
+
+          <div class="math-block">
+            <div class="math">
+              \[
+              \frac{\partial L}{\partial h_{t-k}}
+              \approx
+              \frac{\partial L}{\partial h_t}
+              \prod_{i=t-k+1}^{t}
+              \left(\phi'(a_i)\,W_{hh}\right)
+              \]
+            </div>
+          </div>
+        </div>
+
+        <p>
+          Phrased a bit differently: because the same \(W_{hh}\) appears at every step of the recurrence,
+          it also appears repeatedly in the backward pass. If the factors \(\phi'(a_i)W_{hh}\) are often smaller than
+          1 in magnitude, their product shrinks rapidly, so early timesteps contribute very little to
+          \(\frac{\partial L}{\partial W_{hh}}\). That is the essence of the vanishing gradient problem.
+        </p>
+
+        <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/vanishing_gradeint.svg" alt="Backward gradient weakening as it moves through an unrolled recurrent network." />
+          <div class="figure-label">
+            <strong>Figure 2:</strong> The loss is applied at the output, and its backward signal becomes weaker as it is propagated through earlier recurrent steps.
+          </div>
+        </div>
+
+        <div class="math-block">
+          <div class="math">
+            \[
+            (W_{hh})_{ij} \leftarrow (W_{hh})_{ij} - \eta \frac{\partial L}{\partial (W_{hh})_{ij}}
+            \]
+          </div>
+        </div>
+
+        <p>
+          After backpropagation computes the gradient of the loss function with respect to each hidden layer h(t), each entry of \(W_{hh}\) is updated using this rule.
+          If early timesteps contribute only very small gradients, then the total gradient is dominated more by
+          recent timesteps than by long-range dependencies. In that case, information from earlier parts of the
+          sequence has very little effect on the update, so those contributions are effectively lost.
+        </p>
+
+
+        <h3>With Attention</h3>
+
+        <p>
+          With attention, the current position does not need to rely on many sequential recurrent steps and can instead directly read from earlier relevant positions.
+        </p>
+
+        <div class="math-block">
+          <div class="math">
+            \[
+            z_t = \sum_j \alpha_{tj} V_j
+            \]
+          </div>
+        </div>
+
+        <p>
+          So if token \(t\) needs information from token \(j\), it does not need to preserve that signal through
+          \(t-j\) recurrent transitions. It can form a direct weighted connection to that earlier token.
+        </p>
+
+        <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/attention_visual.png" alt="Attention pattern visualization from the original transformer paper." />
+          <div class="figure-label">
+            <strong>Figure 3:</strong> Example attention pattern from <em>Attention Is All You Need</em>, showing how a token can assign different weights to earlier positions.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
+          </div>
+        </div>
+
+        <p>
+          The attention mechanism leads to the following improvements: (1) the forward path is shorter and (2) the backward gradient path is shorter. As a result of this, deep dependencies are easier to learn and can more effectively be used to generate
+          more probable output. This is the key breakthrough that introduced the transformer architecture as an
+          effective means of sequence modeling in <em>Attention Is All You Need</em>.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
+        </p>
+      </section>
+
+      <section id="architecture">
+        <h2>Transformer Architecture</h2>
+
+        <div class="embedded-figure embedded-figure--narrow">
+          <img src="../../imgs/notes/transformers/transformer.png" alt="Encoder-decoder transformer architecture from the transformer architecture paper." />
+          <div class="figure-label">
+            <strong>Figure 4:</strong> Encoder-decoder transformer architecture from <em>Attention Is All You Need</em>, showing stacked encoder and decoder blocks connected by cross-attention.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
+          </div>
+        </div>
+
+        <p>
+          The transformer architecture replaces recurrence with stacked attention and feedforward blocks,
+          allowing each token to gather context from the entire sequence in parallel.
+        </p>
+
+        <p>
+          <strong>Encoder</strong> models receive an input and build a representation of it. They are useful when
+          the goal is to understand the input, such as in sentence classification or entity recognition. BERT is a
+          common example.
+        </p>
+
+        <p>
+          <strong>Decoder</strong> models generate a sequence one token at a time using prior context. They are
+          useful for generative tasks such as text generation. GPT is a common example.
+        </p>
+
+        <p>
+          <strong>Encoder-Decoder</strong> models use the encoder to understand the input and the decoder to
+          generate the output. They are useful for tasks such as translation and summarization. T5 and the original
+          transformer are common examples.
+        </p>
+
+      </section>
+
+      <section id ="stepthrough">
+        <h3>Decoder Flow</h3>
+
+        <div class="step-list">
+          <div class="step-entry">
+            <h4>1. Token Embeddings and Positions</h4>
+            <p>
+              Raw tokens are encoded into some N-dimensional vector. Positional information is encoded as well. 
+            </p>
+            <div class="embedded-figure embedded-figure--narrow embedded-figure--left">
+            <img src="../../imgs/notes/transformers/encoded.svg" alt="Raw tokens being converted into vector embeddings with positional information." />
+            <div class="figure-label">
+              <strong>Figure 5:</strong> Raw tokens are mapped into dense vector embeddings, with positional information added before entering the decoder.
+</div>
+            </div>
+          </div>
+
+          <div class="step-entry">
+            <h4>2. Masked Self-Attention</h4>
+            <p>After getting encoded into some high-dimensional vector representation of real numbers, the token being processed heads to the attention layers. </p>
+
+       <div class="math-block">
+          <div class="math">
+            \[
+            \mathrm{Attention}(Q, K, V)
+            =
+            \mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+            \]
+          </div>
+        </div>
+          <p>There are 3 different projected representations used in attention:</p>
+          <ul>
+            <li><b>Query (Q)</b> which determines what kind of information the current position wants to retrieve</li>
+            <li><b>Key (K)</b> which is compared against queries to decide how relevant each token is</li>
+            <li><b>Value (V)</b> which is the information mixed into the output according to those attention weights</li>
+          </ul>
+
+          <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/individual_weights.svg" alt="Separate learned projections for queries, keys, and values." />
+          <div class="figure-label">
+            <strong>Figure 6:</strong> Each parameter matrix is applied to each token representation to produce a vector of that parameter on the token.
+          </div>
+        </div>
+
+<div class="embedded-figure embedded-figure--narrow">
+  <img src="../../imgs/notes/transformers/full_matrix_pre_softmax.svg" alt="Attention score matrix before softmax is applied." />
+  <div class="figure-label">
+    <strong>Figure 7:</strong> Raw attention score matrix before softmax. Each entry shows how strongly one token matches another before normalization.
+  </div>
+</div>
+
+<div class="embedded-figure">
+  <img src="../../imgs/notes/transformers/full_matrix_post_softmax.svg" alt="Attention weight matrix after softmax is applied." />
+  <div class="figure-label">
+    <strong>Figure 8:</strong> Attention weight matrix after softmax. The scores are normalized into weights that determine how much each token contributes to the updated representation.
+  </div>
+</div>
+
+
+          <p> 
+        For a decoder architecture, the current token being processed should only have context of all previously processed tokens to that point. Therefore future tokens are masked with negative infinity which become zero following softmax.
+          </p>
+
+          <p>
+          Now the updated France vector carries not just "France-ness", but a more contextual representation relating France to the concept of a capital in a city. This helps the decoder provide a more accurate prediction for the next appropriate token.
+          </p>
+
+
+  <p>In another example:</p>
+<div class="example-item">
+  <p class="example-text">"The snack-seeking, scruffy dog ran to the"</p>
+
+</div>
+  <p >
+    Attention helps the model treat <code>dog</code> in the context of the full phrase, not just as an isolated word.
+    Because of that, the continuation can better reflect the meaning of the sentence as a whole, predicting some place a snack-seeking scruffy dog would run to...
+  </p>
+
+          </div>
+
+          <div class="step-entry">
+            <h4>3. Feedforward Layer and Next-Token Prediction</h4>
+            <p>
+              The transformer also has feedforward elements. These are no different than a traditional feedforward neural network. They have their own weights and discover some kind of other useful meaning.
+            </p>
+            <p>  
+              By the end of these serial layers, the transformer takes the last hidden vector <code>h</code> and
+              multiplies it by a vocabulary matrix. This produces one raw score for every possible token in the
+              vocabulary.
+            </p>
+
+            <div class="math-block">
+              <div class="math">
+                \[
+                \mathrm{logits} = W_{\mathrm{vocab}} h + b
+                \]
+              </div>
+            </div>
+
+            <p>
+              These are not probabilities yet. They are just raw scores, so for a phrase like
+              <code>The capital of France is</code>, the model might assign larger values to more plausible next
+              tokens.
+            </p>
+
+            <div class="code-block">
+<pre><code>"Paris"   -> 12.3
+"London"  -> 4.8
+"city"    -> 3.1
+"banana"  -> -2.0</code></pre>
+            </div>
+
+            <p>
+              Softmax then turns those logits into probabilities:
+            </p>
+
+            <div class="math-block">
+              <div class="math">
+                \[
+                P(\mathrm{token}_i)
+                =
+                \frac{e^{\mathrm{logit}_i}}{\sum_j e^{\mathrm{logit}_j}}
+                \]
+              </div>
+            </div>
+
+            <p>
+              After softmax, the model now has a probability distribution over the vocabulary:
+            </p>
+
+            <div class="code-block">
+<pre><code>"Paris"   -> 0.82
+"London"  -> 0.06
+"city"    -> 0.03
+...</code></pre>
+            </div>
+
+            <p>
+              The decoder can then choose the next token from this distribution. It may do this using many heuristics on top of the probability. For example, it may manage repetition by adding presence or frequency penalties that help keep the model from repeating itself. Likewise, limits on total token output length could exist that steer the model away from generating massive streams.
+            </p>
+              
+            <p>
+ Following the generation of the next word, that word is added back into the model. Effectively, the model shifts forward, incorporating that token into the context for its next step. At this point, the model is already pre-filled with context, so re-feeding the entire input from scratch would be inefficient. To avoid this, caching is often used. The K-V vectors are kept in memory, which significantly reduces computation and speeds up future passes through the model.
+            </p>
+
+            <h3>The Trade With More Context</h3>
+            <p>
+  More context allows the model to look back at more information that's hopefully relevant. That information can provide deeper insight for more accurate generation. However, as the context grows, attention layers become more expensive in both compute and memory. <code>Q</code>, <code>K</code>, and <code>V</code> grow with n, while the attention value matrix grows with n^2.
+              With K-V caching, this directly impacts the amount of memory needed during forward passes of the model.
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="references">
+        <h2>References</h2>
+        <ul class="references-list">
+          <li id="ref-1"><a href="https://proceedings.neurips.cc/paper/7181-attention-is-all">[1] Google: Attention Is All You Need</a></li>
+          <li id="ref-5"><a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">[5] OpenAI: Improving Language Understanding by Generative Pre-Training</a></li>
+          <li id="ref-2"><a href="https://www.youtube.com/watch?v=eMlx5fFNoYc">[2] Attention in transformers, step-by-step | Deep Learning Chapter 6</a></li>
+          <li id="ref-3"><a href="https://huggingface.co/learn/llm-course/en/chapter1/1">[3] Hugging Face LLM Course</a></li>
+          <li id="ref-4"><a href="https://www.superdatascience.com/blogs/recurrent-neural-networks-rnn-the-vanishing-gradient-problem">[4] SuperDataScience: recurrent neural networks and the vanishing gradient problem</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer class="consoleBlock note-footer">
+      <a class="bold" href="mailto:victortaksheyev@gmail.com">victortaksheyev@gmail.com</a>
+    </footer>
+  </main>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
