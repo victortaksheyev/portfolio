@@ -235,6 +235,10 @@
       padding: 8px 0;
     }
 
+    .math--no-scroll {
+      overflow-x: visible;
+    }
+
     .math-block {
       margin: 22px 0;
     }
@@ -508,6 +512,10 @@
 
       pre {
         padding: 20px;
+      }
+
+      .math--no-scroll {
+        font-size: 0.92rem;
       }
     }
   </style>
@@ -1105,19 +1113,21 @@ lookup     -> [E[1834], E[481]]</code></pre>
 
         <h4>Quantization</h4>
         <div class="math-block">
-          <div class="math">
+          <div class="math math--no-scroll">
             \[
-            W =
+            \begin{aligned}
+            W &=
             \begin{bmatrix}
             0.1827 & -1.9432 \\
             2.7181 & 0.0049
             \end{bmatrix}
-            \;\rightarrow\;
-            \hat{W} =
+            \\
+            \Rightarrow\quad \hat{W} &=
             \begin{bmatrix}
             0.18 & -1.94 \\
             2.72 & 0.00
             \end{bmatrix}
+            \end{aligned}
             \]
           </div>
         </div>
