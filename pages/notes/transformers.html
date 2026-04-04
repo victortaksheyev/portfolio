@@ -308,6 +308,13 @@
       font-weight: 600;
     }
 
+    .figure-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
     .caption {
       text-align: center;
       color: var(--muted);
@@ -541,14 +548,14 @@
       </div>
 
       <p class="hero-subtitle">
-       Attention, long-range dependencies, and next-token prediction in transformers.
+       notes on the transformer architecture
       </p>
 
       <div class="hero-rule"></div>
 
       <div class="hero-meta">Topics</div>
       <div class="hero-tags">
-        self-attention, RNN comparison, vanishing gradients, decoder flow, logits, KV cache
+        recurrent neural networks, information loss, attention, transformer architecture, Q/K/V intuition, encoder/decoder behavior, logits and softmax, KV cache, tokenization, embeddings, quantization, optimization
       </div>
     </header>
 
@@ -564,7 +571,7 @@
         </p>
 
         <p>
-          Language tasks are inherently sequential, yet often depend on relationships between distant pieces of text, making them a strong example of why attention is powerful.
+          Language tasks are inherently sequential, yet often depend on relationships between distant pieces of text, making them a strong use case for leveraging the attention mechanism.
         </p>
 
         <p>Consider the following text streams:</p>
@@ -594,7 +601,7 @@
         <div class="embedded-figure">
           <img src="../../imgs/notes/transformers/rnn_vs_attention.svg" alt="Comparison of recurrent hidden-state processing and direct attention-based context lookup." />
           <div class="figure-label">
-            <strong>Figure 1:</strong> Left: an RNN passes information through a chain of hidden states to reach the next-token prediction. Right: attention lets the current position connect directly to earlier relevant tokens.
+            <strong>Figure 1:</strong> Left: an (unrolled) RNN passes information through a chain of hidden states to reach the next-token prediction. Right: attention lets the current position connect directly to earlier relevant tokens.
           </div>
         </div>
 
@@ -612,46 +619,139 @@
         <br>
 
         <p>
-          In this case, the model needs to preserve the relevance of <code>France</code> across many intermediate hidden states.
+          In this case, the model needs to preserve the relevance of <code>France</code> across many intermediate hidden states as all of the subsequent words get processed through the network.
           As information is passed step by step, that signal weakens, making it difficult to encode the importance of that token. In turn, the model's prediction could become inaccurate - or, not as accurate as it would be if it maintained that relevance.
         </p>
 
-        <p>
-          A related issue is that as sequential depth increases, the risk of vanishing gradients also grows, making training more difficult.
-        </p>
+        <p>Mathematically, the information at time \(t\) is a function of the summary of the past stored in \(h_{t-1}\), combined with the current input \(x_t\).</p>
+
+          <div class="math-block">
+          <div class="math">
+              \[
+              h_t = f(W_{hh}h_{t-1} + W_{xh}x_t + b)
+              \]
+          </div>
+        </div>
+
+
+        <h3>With Attention</h3>
 
         <p>
-          When a recurrent neural network is unrolled, as shown in the diagram above, these two issues become more apparent. It can be seen that the hidden state at a timestep t <code>h_t</code> is a function of all previous states. 
+          With attention, the current position does not need to rely on many sequential recurrent steps and can instead directly read from earlier relevant positions.
         </p>
+
+        <p>The representation of position t is the weighted sum of all of the value vectors from all positions j: </p>
 
         <div class="math-block">
           <div class="math">
             \[
-            h_t = \phi(W_{hh} h_{t-1} + W_{xh} x_t + b)
+            z_t = \sum_j \alpha_{tj} V_j
             \]
           </div>
         </div>
 
         <p>
-          Expanding the recurrence itself shows the same hidden-to-hidden matrix \(W_{hh}\) is reused at every timestep.
+          If token \(t\) needs information from token \(j\), it does not need to preserve that signal through
+          \(t-j\) recurrent transitions. It can form a direct weighted connection to that earlier token.
         </p>
 
-      <div class="math-block">
-        <div class="math">
-          \[
-          h_t = \phi(W_{hh}\,\phi(W_{hh}\,\phi(\cdots W_{hh} h_0 \cdots)))
-          \]
+        <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/attention_visual.png" alt="Attention pattern visualization from the original transformer paper." />
+          <div class="figure-label">
+            <strong>Figure 3:</strong> Example attention visualization (encoder architecture) <em>Attention Is All You Need</em><a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
+          </div>
         </div>
 
-      <p>
-        During the forward pass, information from the initial hidden state <code>h_0</code> can become progressively diluted as it is transformed through many repeated applications of the recurrence.
-      </p>
+        <p>
+          The attention mechanism removes the need for serial information to "survive" long chains by allowing each token to access the information of all other tokens in the current context. The impact of past tokens is no longer a function of their values <b> and their signal strength</b> 
+          as they pass through the network, but merely a function of their values.  As a result of this, deep dependencies are easier to learn and can more effectively be used to generate
+          more probable output. 
+          
+        </p>
+        <p>
+          This is the key breakthrough that introduced the transformer architecture as an
+          effective means of sequence modeling in <em>Attention Is All You Need</em>.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
+        </p>
+        <h4>Backpropagation and Vanishing Gradient in Recurrent Neural Networks</h4>
 
-      </div>
+        <p>
+          Along with information loss through the network, sequential depth in recurrent neural networks also makes training harder because it leads to the vanishing gradient problem.
+        </p>
+
+        <p>
+          The most common way neural networks are trained is using backpropagation. 
+        </p>
+
+        <p>
+          At a high level, it determines how the error (loss function) is affected by the currently layer's outputs which, in turn, is a function of the previous layer's outputs and model weights, recursively. It then updates the weights to minimize the error loss for the next iteration.
+        </p>
+        <p>
+          Mathematically, \(h^{(l)}\), the output of layer \(l\), is a function of the output of layer \(l-1\) and the weights at layer \(l\), \(W^{(l)}\).
+
+        </p> 
+
+        <div class="math-block">
+          <div class="math">
+            \[
+            h^{(l)} = f\!\left(h^{(l-1)}, W^{(l)}\right),
+            \]
+          </div>
+        </div>
+
+        <p>
+          Computing the gradients determines how each layer (and therefore weight) affects the error.
+        </p>
+
+        <div class="math-block">
+          <div class="math">
+            \[
+            \frac{\partial L}{\partial h^{(l)}}
+            \xrightarrow{\text{chain rule}}
+            \left(
+            \frac{\partial L}{\partial h^{(l-1)}},
+            \frac{\partial L}{\partial W^{(l)}}
+            \right)
+            \]
+          </div>
+        </div>
+
+          <p>
+             From there, the weights are updated to minimize the error for the next pass. This continues to occur via billions/trillions of cycles on diverse inputs, resulting in the final weights and biases matrices that a model gets shipped with. 
+          </p>
+            <div class="math-block">
+          <div class="math">
+            \[
+            (W_{hh})_{ij} \leftarrow (W_{hh})_{ij} - \eta \frac{\partial L}{\partial (W_{hh})_{ij}}
+            \]
+          </div>
+
+  
+        </div>
+
+        <p>
+          The vanishing gradient problem describes the behavior where, as backpropagation moves toward earlier layers of a neural network, the gradient becomes so small that the influence of those layers on the loss effectively vanishes. This typically occurs because the gradient is repeatedly multiplied by values whose magnitudes are less than 1, causing it to shrink exponentially.
+        </p>
+
+        <p>Recurrent neural networks are prone to this behavior because expanding their recurrence relation (unrolling) reveals that the gradient at early timesteps is a long product of repeated transformations with common factors.</p>
+
+<div class="math-block">
+  <div class="math">
+    \[
+    \begin{aligned}
+    h_t &= f(W_{hh} h_{t-1} + W_{xh} x_t + b) \\
+        &= f\!\left( W_{hh}\, f\!\left( W_{hh}\, f\!\left( W_{hh}\, h_{t-3} + \cdots \right) \right) \right)
+    \end{aligned}
+    \]
+  </div>
+</div>
+
+  
+
       <p>
-        During the backwards pass, this same repeated matrix can make training less effective.
-        Since \(W_{hh}\) is reused at every timestep, the backward pass must repeatedly differentiate through it,
-        which can cause the gradient signal to become very small.
+        During backpropogation, the partial derivative of the loss function with respect so some hidden layer timestep becomes a massive product of partial derivatives by the chain rule. 
+        However, from the recurrence relation above, it becomes apparent that each the partial derivatives contain common factors (namely, W_hh) which, in turn, are repeatedly multiplied throughout. 
+        
+        If these common terms are less than 1, the gradient diminishes.  
       </p>
 
         <div class="math-pair">
@@ -675,21 +775,24 @@
             <div class="math">
               \[
               \frac{\partial L}{\partial h_{t-k}}
-              \approx
+              =
               \frac{\partial L}{\partial h_t}
               \prod_{i=t-k+1}^{t}
-              \left(\phi'(a_i)\,W_{hh}\right)
+              \left(f'(a_i)\,W_{hh}\right)
               \]
             </div>
           </div>
         </div>
 
-        <p>
-          Phrased a bit differently: because the same \(W_{hh}\) appears at every step of the recurrence,
-          it also appears repeatedly in the backward pass. If the factors \(\phi'(a_i)W_{hh}\) are often smaller than
-          1 in magnitude, their product shrinks rapidly, so early timesteps contribute very little to
-          \(\frac{\partial L}{\partial W_{hh}}\). That is the essence of the vanishing gradient problem.
-        </p>
+<p>
+  Phrased differently, because the same \(W_{hh}\) appears at every step of the recurrence, it also
+  appears repeatedly in the backward pass. At each timestep, the gradient is multiplied by a factor
+  involving both the recurrent weight \(W_{hh}\) and the slope of the activation function at that
+  step, \(f'(a_i)\), where \(a_i = W_{hh}h_{i-1} + W_{xh}x_i + b\). If these repeated factors tend
+  to be smaller than \(1\) in magnitude, their product shrinks rapidly over many timesteps. As a
+  result, early hidden states contribute very little to \(\frac{\partial L}{\partial h_i}\), and
+  therefore also very little to \(\frac{\partial L}{\partial W_{hh}}\).
+</p>
 
         <div class="embedded-figure">
           <img src="../../imgs/notes/transformers/vanishing_gradeint.svg" alt="Backward gradient weakening as it moves through an unrolled recurrent network." />
@@ -698,53 +801,18 @@
           </div>
         </div>
 
-        <div class="math-block">
-          <div class="math">
-            \[
-            (W_{hh})_{ij} \leftarrow (W_{hh})_{ij} - \eta \frac{\partial L}{\partial (W_{hh})_{ij}}
-            \]
-          </div>
-        </div>
-
         <p>
-          After backpropagation computes the gradient of the loss function with respect to each hidden layer h(t), each entry of \(W_{hh}\) is updated using this rule.
           If early timesteps contribute only very small gradients, then the total gradient is dominated more by
           recent timesteps than by long-range dependencies. In that case, information from earlier parts of the
           sequence has very little effect on the update, so those contributions are effectively lost.
+          In the context of sequential processing of information, this is undesireable since signfiicant meaning from words/data at the beginning of the processing chain
+          can be lost, preventing accurate understanding of the remaining data's context. 
         </p>
-
-
-        <h3>With Attention</h3>
 
         <p>
-          With attention, the current position does not need to rely on many sequential recurrent steps and can instead directly read from earlier relevant positions.
+            In a transformer architecture with attention layers, the impact of these long-range dependencies is less likely to be lost during training because each token can attend directly to relevant earlier tokens, rather than forcing information and gradients to pass through a long chain of recurrent steps.
         </p>
 
-        <div class="math-block">
-          <div class="math">
-            \[
-            z_t = \sum_j \alpha_{tj} V_j
-            \]
-          </div>
-        </div>
-
-        <p>
-          So if token \(t\) needs information from token \(j\), it does not need to preserve that signal through
-          \(t-j\) recurrent transitions. It can form a direct weighted connection to that earlier token.
-        </p>
-
-        <div class="embedded-figure">
-          <img src="../../imgs/notes/transformers/attention_visual.png" alt="Attention pattern visualization from the original transformer paper." />
-          <div class="figure-label">
-            <strong>Figure 3:</strong> Example attention pattern from <em>Attention Is All You Need</em>, showing how a token can assign different weights to earlier positions.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
-          </div>
-        </div>
-
-        <p>
-          The attention mechanism leads to the following improvements: (1) the forward path is shorter and (2) the backward gradient path is shorter. As a result of this, deep dependencies are easier to learn and can more effectively be used to generate
-          more probable output. This is the key breakthrough that introduced the transformer architecture as an
-          effective means of sequence modeling in <em>Attention Is All You Need</em>.<a class="ref-link" href="#ref-1" aria-label="Reference 1">[1]</a>
-        </p>
       </section>
 
       <section id="architecture">
@@ -841,7 +909,7 @@
 
 
           <p> 
-        For a decoder architecture, the current token being processed should only have context of all previously processed tokens to that point. Therefore future tokens are masked with negative infinity which become zero following softmax.
+        For a decoder architecture, the current token being processed should only have context of all previously processed tokens to that point. This is reffered to as its autoregressive property. Therefore future tokens are masked with negative infinity which become zero following softmax.
           </p>
 
           <p>
@@ -852,11 +920,26 @@
   <p>In another example:</p>
 <div class="example-item">
   <p class="example-text">"The snack-seeking, scruffy dog ran to the"</p>
-
-</div>
+    
+    </div>
+        <div class="embedded-figure embedded-figure--narrow">
+          <img src="../../imgs/notes/transformers/adjective_shift_diagram.png" alt="3D vector diagram showing a dog representation shifting first toward snack-seeking dog and then toward snack-seeking scruffy dog." />
+          <div class="figure-label">
+            <strong>Figure 9:</strong> The meaning embedded in <code>dog</code> changes as adjectives add context.
+          </div>
+        </div>
   <p >
-    Attention helps the model treat <code>dog</code> in the context of the full phrase, not just as an isolated word.
-    Because of that, the continuation can better reflect the meaning of the sentence as a whole, predicting some place a snack-seeking scruffy dog would run to...
+    Attention helps the model treat <code>dog</code> in the context of the full phrase, not just as an isolated word. As described earlier, the updated encoding (directionality of dog) is a function of the updated score matrix that that "embeds" the adjective information into the "dog" information. 
+  </p>
+
+  <p>
+    In an oversimplified mental picture, different "directions" in the hyper-dimensional space can represent different meanings. In 3 dimensions - one dimension can represent "dog-like" qualities, one can represent "scruffy-like" qualities, and one can represent "snack-seeking-like" qualities...
+
+  </p>
+  
+  <p>
+    The "dog" vector now reflects the full phrase instead of the word alone.
+    The model is then more likely to predict a location where a <b>snack-seeking, scruffy</b> dog would run to...
   </p>
 
           </div>
@@ -864,7 +947,7 @@
           <div class="step-entry">
             <h4>3. Feedforward Layer and Next-Token Prediction</h4>
             <p>
-              The transformer also has feedforward elements. These are no different than a traditional feedforward neural network. They have their own weights and discover some kind of other useful meaning.
+              The transformer also has feedforward elements. These are no different than a traditional feedforward neural network. They have their own weights and discover some kind of other useful meaning. This is a high level description with lots of potential for deep dives...
             </p>
             <p>  
               By the end of these serial layers, the transformer takes the last hidden vector <code>h</code> and
@@ -929,7 +1012,7 @@
             <h3>The Trade With More Context</h3>
             <p>
   More context allows the model to look back at more information that's hopefully relevant. That information can provide deeper insight for more accurate generation. However, as the context grows, attention layers become more expensive in both compute and memory. <code>Q</code>, <code>K</code>, and <code>V</code> grow with n, while the attention value matrix grows with n^2.
-              With K-V caching, this directly impacts the amount of memory needed during forward passes of the model.
+              If K-V caching is implemented, a larger context also increases the amount of memory needed during execution steps of the model.
             </p>
 
           </div>
@@ -938,10 +1021,27 @@
 
       <section id="tokenization">
         <h2>Tokenization</h2>
-        <h3>Breaking Text into Tokens (todo)</h3>
-        <h3>Token IDs and Embeddings</h3>
+            <div class="embedded-figure embedded-figure--narrow">
+          <img src="../../imgs/notes/transformers/tokens.png" alt="Tokenization example" />
+          <div class="figure-label">
+            <strong>Figure 10:</strong> Tokenized input example from OpenAI Tokenizer.<a class="ref-link" href="#ref-9" aria-label="Reference 9">[9]</a>
+          </div>
+        </div>
+
+               <p>
+          Tokenization refers to the way input is partitioned into units, which are called tokens. There are many ways that words can be partitioned or tokenized. 
+          While larger tokens require less computation resources (since more information is grouped together), they also require more memory (since more "unique information" needs to be encoded rather than relying on smaller subset chunks).
+          Larger tokens may also not work well with typos since they may rely on exact word representations. 
+          </p>
+
+          <p>
+
+            Byte pair encoding is one popular encoding method. It merges commonly present byte pairs together as the basis for tokens. It's not as verbose as having all characters be unique tokens (which results in massive amounts of data) but also more flexible than having tokens be words. 
+          </p>
+        <h3>Embeddings</h3>
         <p>
-          After text is split into tokens, each token is mapped to an integer ID. That ID is then used as an index into a learned embedding table, returning the token's vector representation.
+          After being tokenized, the tokens are mapped to a high-dimensional vector that "aquire meaning" throughout the transormer process to end up forming a probability distribution of the next most likely tokens. 
+          The tokens get corresponding token ids that map to the embedding lookup. 
         </p>
         <div class="math-block">
           <div class="math">
@@ -955,48 +1055,119 @@
 token IDs  -> [1834, 481]
 lookup     -> [E[1834], E[481]]</code></pre>
         </div>
-        <div class="small-note">
-          Each token ID selects a row from the embedding matrix.
-        </div>
         <p>
-          These vectors are learned numerical representations. Their direction in the embedding space can encode multiple overlapping pieces of meaning at once.
+          As mentioned earlier, the vectors encode infromation. One way to think of it is that the vector encodes multi-dimentional directions, with each direction representing some piece of "meaning". An oversimplified 3D visual can help illustrate the point:
         </p>
 
         <div class="embedded-figure">
           <img src="../../imgs/notes/transformers/embedding_directions_3d.png" alt="3D embedding visualization showing related words arranged with similar semantic directions." />
           <div class="figure-label">
-            <strong>Figure 9:</strong> Token IDs map into vectors, and similar directions can reflect similar relationships.
+            <strong>Figure 11:</strong> Oversimplified mapping of vectors, with similar directions reflecting similar relationships.
           </div>
         </div>
 
         <p>
-          The embedding lookup gives the model an initial vector. Attention layers described earlier can update that vector using context and shift it toward a more specific meaning.
+          The embedding lookup gives the model an initial vector. Attention layers, described earlier, can update that vector using context and shift it toward a more specific meaning.
         </p>
 
-        <div class="embedded-figure embedded-figure--narrow">
-          <img src="../../imgs/notes/transformers/adjective_shift_diagram.png" alt="3D vector diagram showing a noun representation shifting toward a contextualized adjective-noun representation." />
-          <div class="figure-label">
-            <strong>Figure 10:</strong> Context + attention layers move a vector from <code>dog</code> toward <code>small dog</code>.
-          </div>
-        </div>
+
       </section>
 
       <section id="optimization">
-        <h2>Optimization (todo)</h2>
-        <h3>Training-Time Optimization</h3>
-        <p>talk about parallelism and memory/backprop, attention cost during training, encoding vectors into smaller dimensions</p>
+        <h2>Optimization</h2>
         <h3>Inference-Time Optimization</h3>
-        <p>talk about prefill/decode, kv cache, batching, quantization (encoding vectors)</p>
+        <p>
+        Inference-time optimizations refer to optimizations that improve performance at the time of model execution. Performance can be quantified in various different ways including the latency from input to first token generated, the amount of memory used, the amount of compute used, etc etc.
+        </p>
+        <p>
+          This can be its own post (or multiple) so keeping things at a high level, some of the largest low-hanging fruit optimizations include:
+        </p>
+        <ul>
+          <li>Caching intermediate model representations (KV)</li>
+          <li>Quantizing weights and activations</li>
+          <li>Quantizing embeddings</li>
+        </ul>
+        <h4>Caching</h4>
+        <p>
+          Transformer models have learned parameters, which are obtained during training and remain fixed at inference time. They also have input-dependent activations, which vary as a function of the input passed into the model. Examples of learned parameters include the query, key, and value weight matrices \(W_Q\), \(W_K\), and \(W_V\).
+          But the \(Q\), \(K\), and \(V\) matrices, which are functions of both the input and those learned weights, such as \(Q = XW_Q\), depend on all of the input the model has processed so far during inference.
+          </p>
+
+          <p>
+          As new input is fed into the model, it would be very wasteful to have to recompute those internal intererence-time states. That would significantly increase compute and add lots of latency. Instead of doing that, those runtime parameters can be cached such that by processing the next token, the model builds 
+          upon the previous representations instead of recomputing them entirely. This trades compute and latency for memory, so it's often critical to strike a balance with the amount of context that the model can accept. 
+        </p>
+
+        <p>
+          An extreme example helps illustrate the value of inference-time caching. Suppose a model is given a 100-page PDF and asked to first identify its main topics. Without caching, every newly generated token would require the model to repeatedly recompute representations for the entire document. With caching, those earlier computations can be reused, allowing the model to focus only on the newly generated token while still referencing the full prior context.
+          Subsequent queries to then summarize the pdf or determine its tone are able to run much faster since the "representation" of the PDF is maintained. 
+        </p>
+
+        <h4>Quantization</h4>
+        <div class="math-block">
+          <div class="math">
+            \[
+            W =
+            \begin{bmatrix}
+            0.1827 & -1.9432 \\
+            2.7181 & 0.0049
+            \end{bmatrix}
+            \;\rightarrow\;
+            \hat{W} =
+            \begin{bmatrix}
+            0.18 & -1.94 \\
+            2.72 & 0.00
+            \end{bmatrix}
+            \]
+          </div>
+        </div>
+
+        <p> Quantizing refers to the process of converting numerical data to lower precision via a lower-capacity data type. </p>
+        <p> In the example above, the original weight matrix may have needed 32 bits per weight (f32) wheras the quantized representation may only need 8 bits per weight (int8) with a scalar that allows the matrix to get dequantized. </p>
+        <div class="code-block">
+<pre><code>float32 weight: 0.1827364   # stored in 32 bits
+int8 weight:    18          # stored in 8 bits
+scale:          0.01
+
+approx value = 18 * 0.01 = 0.18</code></pre>
+        </div>
+        <p>
+          Applying this back to the transformer model -- quantization can result in massive decreases in memory and increases in speed at the trade of accuracy. 
+        </p>
+        <p>
+          As mentioned earlier, there are billions of parameters that are stored and used in computations through the transformer. 
+ These need to be pulled into GPU memory, transferred around, and used for arithmetic constantly. By quantizing these values, the shapes of the learned parameter matrices such as <code>W_Q</code>, <code>W_K</code>, <code>W_V</code>, <code>W_O</code>, and the feedforward weights <code>W_1</code> and <code>W_2</code> remain the same, but their stored size footprints drop. Intermediate calculations that depend on those quantized values can also become cheaper.
+        </p>
+        
+
+
+        <div class="embedded-figure">
+          <img src="../../imgs/notes/transformers/gen_quant_improvement.jpg" alt="Model improvement"/>
+          <div class="figure-label">
+            <strong>Figure 12:</strong> Inference latency improvement as a function of quantization.<a class="ref-link" href="#ref-6" aria-label="Reference 6">[6]</a>
+          </div>
+        </div>
+        <p>
+          It's also possible to quantize the embeddings (high-dimentional vector representations of tokens). This, in turn, reduces the dimensionionality of many of the arithmentic operations that occur thoughout the transformer (matrix multiplies, maxtrix by scalar multiplies, etc). Reduced dimensionality of arithmetic reduces the compute required to perform it and memory footprint. 
+          There is a whole field of research dedicated to dimensionality reduction while still maintaining precision.
+        </p>
+        <p>
+           There are also efforts to reduce quantization overhead (like the scale factor mentioned in the quantization example above). On March 24, 2026, Google Research introduced TurboQuant and PolarQuant as approaches for reducing quantization overhead via more compact ways of encoding the information needed to perform dequantization.<a class="ref-link" href="#ref-7" aria-label="Reference 7">[7]</a> 
+        </p>
       </section>
 
       <section id="references">
         <h2>References</h2>
         <ul class="references-list">
           <li id="ref-1"><a href="https://proceedings.neurips.cc/paper/7181-attention-is-all">[1] Google: Attention Is All You Need</a></li>
-          <li id="ref-5"><a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">[5] OpenAI: Improving Language Understanding by Generative Pre-Training</a></li>
           <li id="ref-2"><a href="https://www.youtube.com/watch?v=eMlx5fFNoYc">[2] Attention in transformers, step-by-step | Deep Learning Chapter 6</a></li>
           <li id="ref-3"><a href="https://huggingface.co/learn/llm-course/en/chapter1/1">[3] Hugging Face LLM Course</a></li>
           <li id="ref-4"><a href="https://www.superdatascience.com/blogs/recurrent-neural-networks-rnn-the-vanishing-gradient-problem">[4] SuperDataScience: recurrent neural networks and the vanishing gradient problem</a></li>
+          <li id="ref-5"><a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">[5] OpenAI: Improving Language Understanding by Generative Pre-Training</a></li>
+          <li id="ref-6"><a href="https://developer.nvidia.com/blog/optimizing-llms-for-performance-and-accuracy-with-post-training-quantization/">[6] NVIDIA Technical Blog: Optimizing LLMs for Performance and Accuracy with Post-Training Quantization</a></li>
+          <li id="ref-7"><a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/">[7] Google Research Blog: TurboQuant: Redefining AI efficiency with extreme compression</a></li>
+          <li id="ref-8"><a href="https://learn.microsoft.com/en-us/dotnet/ai/conceptual/understanding-tokens">[8] Microsoft Learn: Understanding tokens</a></li>
+          <li id="ref-9"><a href="https://platform.openai.com/tokenizer">[9] OpenAI: Tokenizer</a></li>
         </ul>
       </section>
     </div>
