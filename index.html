@@ -22,7 +22,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script> <!-- typed js -->
 
         <div class="container-fluid" style="max-width:1350px;">
-           <div style="width=100%; height: 100%; margin-bottom: 50px;"> 
+           <div class="navBlock"> 
             <nav class="navbar navbar-expand-lg navbar-light navMid">
                 <a href="index.html"><h1 class="navbar-brand my_custom bold">Victor Taksheyev</h1></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,22 +30,17 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="index.html" id="projectsDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">projects <span class="sr-only">(current)</span></a>
-                    <div class="dropdown-menu navDropdown" aria-labelledby="projectsDropdown">
-                      <a class="dropdown-item" href="#current">current</a>
-                      <a class="dropdown-item" href="#college">college</a>
-                    </div>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">projects <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/notes.html">Notes</a>
+                    <a class="nav-link" href="pages/notes.html">notes</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/about.html">About</a>
+                    <a class="nav-link" href="pages/about.html">about</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="imgs/extras/victorResume.pdf">Resume</a>
+                    <a class="nav-link" target="_blank" href="imgs/extras/victorResume.pdf">resume</a>
                   </li>
                 </ul>
               </div>
@@ -60,7 +55,29 @@
                 <h2 class="sectionHeading">current</h2>
                 <div class="row pb-3 projectGrid">
 
-                    <!-- New project cards go here. Copy this template:
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                        <span class="metadata">surf,surfing,pop up,popup,trainer,hardware,engineering,cad,sensors,electronics,fitness,new</span>
+                        <a href="pages/surf.html">
+                            <div class="imgFrame topSpace">
+                                <img class="card-img-top" src="imgs/surf.jpg" alt="Card image cap">
+                                <p class="imgFrameTxt"> A dry-land trainer for drilling the surf pop-up</p>
+                            </div>
+                            <span class="coverText">Surf <strong class="emph">Pop-Up Trainer</strong> - (wip) </span>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                        <span class="metadata">books,book,reading,content,connector,synthesizer,synthesis,software,nlp,search,knowledge,new</span>
+                        <a href="pages/books.html">
+                            <div class="imgFrame topSpace">
+                                <img class="card-img-top" src="imgs/books.jpg" alt="Card image cap">
+                                <p class="imgFrameTxt"> Connects and synthesizes content across books to enrich the reading experience</p>
+                            </div>
+                            <span class="coverText">Book <strong class="emph">Connector</strong> - (wip) </span>
+                        </a>
+                    </div>
+
+                    <!-- More project cards go here. Copy this template:
 
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
                         <span class="metadata">comma,separated,search,keywords</span>
@@ -76,7 +93,7 @@
                     -->
 
                 </div>
-                <p class="sectionEmpty">Nothing here yet — new projects in progress.</p>
+                <p class="sectionEmpty">Nothing here yet. New projects in progress.</p>
             </section>
 
             <section id="college" class="projectSection">
@@ -262,11 +279,9 @@
             </section>
 
             </div>
-                 <div class="row pb-3" style=" margin-top: 40px; margin-bottom: 0!important;">
-                    <div class="consoleBlock" style="height: 70px; text-align: center; width:100%;">  
-                    <a style="color: white;" class="bold" href="mailto:victortaksheyev@gmail.com"> victortaksheyev@gmail.com </a>
-                    </div>
-                </div>
+            <footer class="siteFooter">
+                <a href="mailto:victortaksheyev@gmail.com">victortaksheyev@gmail.com</a>
+            </footer>
             </div>
 
  

@@ -70,6 +70,11 @@ darkB   #29648A
     padding-bottom: 5px;
 }
 
+/* consistent gap under the header on every page */
+.navBlock {
+    margin-bottom: 50px;
+}
+
 .navMid {
     margin: 10px auto 0;
     width: 100%;
@@ -196,6 +201,12 @@ darkB   #29648A
     padding: 10px;
 }
 
+/* reserve the scrollbar gutter so centred content sits in the same place
+   on short pages (notes, surf) as on long ones (home, marty) */
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     background-color: white;
 }
@@ -218,13 +229,17 @@ body {
     position:absolute;
     top: 0;
     left: 0;
+    /* flex centres the caption whatever its length; the old 20% padding
+       only ever looked centred for a one-line caption */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background: rgba(70, 72, 102, 0.7);
     color: white;
     visibility: hidden;
-    height: 20%;
-    padding: 20% 5% 20% 5%;
-    
+    margin: 0;
+    padding: 8% 6%;
     opacity: 0;
     height: 100%;
     width: 100%;
@@ -266,7 +281,7 @@ span.coverText {
 }
 
 #homeCenter {
-    margin-top: -20px;
+    margin-top: 0;
 }
 
 .sbold {
@@ -487,7 +502,7 @@ and (max-device-width : 1024px)  {
     font-weight: 800;
     letter-spacing: .04em;
     text-transform: lowercase;
-    margin: 45px 0 0;
+    margin: 45px 0 10px;
     padding-bottom: 8px;
     border-bottom: 2px solid #303030;
 }
@@ -502,31 +517,29 @@ and (max-device-width : 1024px)  {
     margin: 18px 0 0;
 }
 
-/* projects dropdown in the navbar */
+/* one footer for every page */
 
-.navDropdown {
-    border-radius: 0;
-    border: 1px solid #dcdcdc;
-    font-size: .95em;
-    margin-top: 0;
-    min-width: 8rem;
-    padding: 4px 0;
+.siteFooter {
+    align-items: center;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    min-height: 70px;
+    padding: 14px 20px;
+    text-align: center;
+    width: 100%;
 }
 
-.navDropdown .dropdown-item {
-    color: #25274D;
-    padding: 6px 18px;
+.siteFooter a {
+    color: white;
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-decoration: none;
 }
 
-.navDropdown .dropdown-item:hover,
-.navDropdown .dropdown-item:focus {
-    background-color: #f4f4f4;
-    color: #476aa3;
-}
-
-@media (min-width: 992px) {
-    /* open on hover on desktop; the click toggle still works */
-    .navbar-nav .dropdown:hover > .navDropdown {
-        display: block;
-    }
+.siteFooter a:hover,
+.siteFooter a:focus {
+    color: #86c6eb;
+    text-decoration: none;
 }
