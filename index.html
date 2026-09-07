@@ -30,8 +30,13 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="index.html">(college) projects <span class="sr-only">(current)</span></a>
+                  <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="index.html" id="projectsDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">projects <span class="sr-only">(current)</span></a>
+                    <div class="dropdown-menu navDropdown" aria-labelledby="projectsDropdown">
+                      <a class="dropdown-item" href="#current">current</a>
+                      <a class="dropdown-item" href="#college">college</a>
+                    </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="pages/notes.html">Notes</a>
@@ -49,7 +54,34 @@
             
             <input onkeyup="search()" id="searchBox" >
             </div>
-            <div id="homeCenter" class="row pb-3">
+            <div id="projects">
+
+            <section id="current" class="projectSection">
+                <h2 class="sectionHeading">current</h2>
+                <div class="row pb-3 projectGrid">
+
+                    <!-- New project cards go here. Copy this template:
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
+                        <span class="metadata">comma,separated,search,keywords</span>
+                        <a href="pages/PAGE.html">
+                            <div class="imgFrame topSpace">
+                                <img class="card-img-top" src="imgs/IMAGE.png" alt="Card image cap">
+                                <p class="imgFrameTxt"> One-line description shown on hover.</p>
+                            </div>
+                            <span class="coverText"><strong class="emph">Name</strong> - short subtitle </span>
+                        </a>
+                    </div>
+
+                    -->
+
+                </div>
+                <p class="sectionEmpty">Nothing here yet — new projects in progress.</p>
+            </section>
+
+            <section id="college" class="projectSection">
+                <h2 class="sectionHeading">college</h2>
+                <div id="homeCenter" class="row pb-3 projectGrid">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 frame">
                         <span class="metadata">hardware,rocketry,rocket,engineering,control,electronics,pcb,sensors,computer,parachute,gldrr,new</span>   
                         <a href="pages/GLDRR.html">
@@ -225,6 +257,9 @@
 
 
 
+
+                </div>
+            </section>
 
             </div>
                  <div class="row pb-3" style=" margin-top: 40px; margin-bottom: 0!important;">

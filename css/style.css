@@ -474,3 +474,59 @@ and (max-device-width : 1024px)  {
         border: 1px solid grey;
     }
 }
+
+/* project sections (current / college) */
+
+.projectSection {
+    scroll-margin-top: 20px;
+}
+
+.sectionHeading {
+    color: #25274D;
+    font-size: 1.3em;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: lowercase;
+    margin: 45px 0 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #303030;
+}
+
+#current .sectionHeading {
+    margin-top: 15px;
+}
+
+.sectionEmpty {
+    color: #6c757d;
+    font-size: .95em;
+    margin: 18px 0 0;
+}
+
+/* projects dropdown in the navbar */
+
+.navDropdown {
+    border-radius: 0;
+    border: 1px solid #dcdcdc;
+    font-size: .95em;
+    margin-top: 0;
+    min-width: 8rem;
+    padding: 4px 0;
+}
+
+.navDropdown .dropdown-item {
+    color: #25274D;
+    padding: 6px 18px;
+}
+
+.navDropdown .dropdown-item:hover,
+.navDropdown .dropdown-item:focus {
+    background-color: #f4f4f4;
+    color: #476aa3;
+}
+
+@media (min-width: 992px) {
+    /* open on hover on desktop; the click toggle still works */
+    .navbar-nav .dropdown:hover > .navDropdown {
+        display: block;
+    }
+}
