@@ -72,7 +72,7 @@ darkB   #29648A
 
 /* consistent gap under the header on every page */
 .navBlock {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .navMid {
@@ -81,7 +81,25 @@ darkB   #29648A
     max-width: 900px;
     padding-left: 0;
     padding-right: 0;
+    /* pinned so the nav looks identical on pages that set their own body
+       font, such as the transformers note (Inter at 18px) */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
     /* border-bottom: 5px solid #303030; */
+}
+
+/* the nav list is a ul/li, so bare element rules in a page's own stylesheet
+   (the transformers note has some) would otherwise indent and resize it */
+.navMid .navbar-nav {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.navMid .nav-item {
+    margin: 0;
 }
 
 #searchBox {
@@ -371,7 +389,7 @@ span.coverText {
 .navMidAbout {
     margin-top: 10px;
     width: 100%;
-    font-size: .9em;
+    font-size: .9rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: -30px;
@@ -382,7 +400,7 @@ span.coverText {
 .navMid {
     margin-top: 10px;
     width: 100%;
-    font-size: .9em;
+    font-size: .9rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0px;
@@ -464,7 +482,7 @@ and (max-device-width : 1024px)  {
         margin-top: 10px;
         width: 100%;
         max-width: 900px;
-        font-size: .9em;
+        font-size: .9rem;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0px;
@@ -475,7 +493,7 @@ and (max-device-width : 1024px)  {
         margin-top: 10px;
         width: 100%;
         max-width: 900px;
-        font-size: .9em;
+        font-size: .9rem;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0px;
@@ -502,9 +520,7 @@ and (max-device-width : 1024px)  {
     font-weight: 800;
     letter-spacing: .04em;
     text-transform: lowercase;
-    margin: 45px 0 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #303030;
+    margin: 45px 0 18px;
 }
 
 #current .sectionHeading {

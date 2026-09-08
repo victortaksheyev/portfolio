@@ -45,49 +45,12 @@
     .page {
       max-width: var(--max-page);
       margin: 0 auto;
-      padding: 24px 22px 0;
+      /* no top padding: container-fluid on every other page has none either,
+         so the nav would otherwise start 24px lower here */
+      padding: 0 22px;
     }
 
-    .notes-nav-shell {
-      max-width: var(--max-text);
-      margin: 0 auto 50px;
-    }
-
-    .notes-nav-shell .navbar {
-      padding: 0;
-    }
-
-    .notes-nav-shell .navbar-nav {
-      flex-wrap: wrap;
-    }
-
-    .notes-nav-shell .nav-link {
-      color: var(--text);
-    }
-
-    .notes-nav-shell .nav-link:hover {
-      color: #476aa3;
-    }
-
-    @media (min-width: 992px) {
-      .notes-nav-shell .navbar {
-        justify-content: center;
-      }
-
-      .notes-nav-shell .navbar-collapse {
-        flex-grow: 0;
-      }
-
-      .notes-nav-shell .navbar-brand {
-        margin-right: 1.5rem;
-      }
-
-      .notes-nav-shell .navbar-nav {
-        align-items: center;
-      }
-    }
-
-    .hero {
+.hero {
       background: var(--card);
       color: var(--card-text);
       border-radius: var(--radius);
@@ -480,7 +443,7 @@
       }
 
       .page {
-        padding: 14px 14px 0;
+        padding: 0 14px;
       }
 
       .hero {
@@ -511,8 +474,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <main class="page">
-    <div class="notes-nav-shell">
-      <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="navBlock">
+      <nav class="navbar navbar-expand-lg navbar-light navMid">
         <a href="../../index.html"><h1 class="navbar-brand my_custom bold">Victor Taksheyev</h1></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
