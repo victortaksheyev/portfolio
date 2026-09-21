@@ -584,7 +584,13 @@ and (max-device-width : 1024px)  {
 
 .tradeTable td:first-child {
     font-weight: 600;
-    white-space: nowrap;
+}
+
+/* the approach names are the longest single cells, so let them wrap and cap
+   the column -- unwrapped they squeezed the other two on narrow screens */
+.tradeTable th:first-child,
+.tradeTable td:first-child {
+    width: 26%;
 }
 
 .tradeTable tbody tr:hover {
