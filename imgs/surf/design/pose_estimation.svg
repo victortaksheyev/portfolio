@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <line x1="20" y1="168" x2="380" y2="168" stroke="#d5dae5" stroke-width="1"/>
+
+  <g stroke="#9aa6bf" stroke-width="1" stroke-dasharray="4 3">
+    <line x1="48" y1="72" x2="150" y2="40"/>
+    <line x1="48" y1="72" x2="150" y2="166"/>
+    <line x1="352" y1="72" x2="270" y2="40"/>
+    <line x1="352" y1="72" x2="270" y2="166"/>
+  </g>
+
+  <g fill="#ffffff" stroke="#152238" stroke-width="1.5">
+    <rect x="34" y="60" width="14" height="24" rx="2"/>
+    <rect x="352" y="60" width="14" height="24" rx="2"/>
+  </g>
+  <g stroke="#152238" stroke-width="1.2">
+    <line x1="41" y1="84" x2="30" y2="168"/>
+    <line x1="41" y1="84" x2="41" y2="168"/>
+    <line x1="41" y1="84" x2="52" y2="168"/>
+    <line x1="359" y1="84" x2="348" y2="168"/>
+    <line x1="359" y1="84" x2="359" y2="168"/>
+    <line x1="359" y1="84" x2="370" y2="168"/>
+  </g>
+
+  <rect x="130" y="160" width="150" height="6" rx="3" fill="#eef1f6" stroke="#152238" stroke-width="1.5"/>
+
+  <g stroke="#152238" stroke-width="2" stroke-linecap="round" fill="none">
+    <polyline points="170,158 182,132 205,110 228,128 240,158"/>
+    <line x1="205" y1="110" x2="201" y2="70"/>
+    <polyline points="158,92 178,84 201,70 226,82 248,88"/>
+  </g>
+  <circle cx="202" cy="54" r="9" fill="#ffffff" stroke="#152238" stroke-width="2"/>
+
+  <g fill="#1e4363">
+    <circle cx="170" cy="158" r="3.5"/>
+    <circle cx="240" cy="158" r="3.5"/>
+    <circle cx="182" cy="132" r="3.5"/>
+    <circle cx="228" cy="128" r="3.5"/>
+    <circle cx="205" cy="110" r="3.5"/>
+    <circle cx="201" cy="70" r="3.5"/>
+    <circle cx="178" cy="84" r="3.5"/>
+    <circle cx="226" cy="82" r="3.5"/>
+    <circle cx="158" cy="92" r="3.5"/>
+    <circle cx="248" cy="88" r="3.5"/>
+    <circle cx="180" cy="186" r="3.5"/>
+  </g>
+
+  <g font-size="11" fill="#152238">
+    <text x="41" y="188" text-anchor="middle">Camera 1</text>
+    <text x="359" y="188" text-anchor="middle">Camera 2</text>
+    <text x="188" y="190">Keypoints</text>
+  </g>
+</svg>

@@ -559,3 +559,42 @@ and (max-device-width : 1024px)  {
     color: #86c6eb;
     text-decoration: none;
 }
+
+.tradeTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9em;
+    color: #152238;
+}
+
+.tradeTable th {
+    font-weight: 600;
+    color: #152238;
+    padding: 8px 12px;
+    border-bottom: 2px solid #152238;
+    white-space: nowrap;
+}
+
+.tradeTable td {
+    padding: 12px;
+    border-bottom: 1px solid #e3e6ed;
+    vertical-align: top;
+}
+
+.tradeTable td:first-child {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tradeTable tbody tr:hover {
+    background-color: #f7f8fb;
+}
+
+.tradeTable tr.selected td {
+    background-color: #eef3f9;
+}
+
+.tradeTable tr.selected td:first-child {
+    box-shadow: inset 3px 0 0 #1e4363;
+}

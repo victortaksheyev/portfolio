@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <polygon points="33.5,182.8 233.5,182.8 240.5,178.2 40.5,178.2" fill="#152238"/>
+  <polygon points="47.5,173.8 247.5,173.8 254.5,169.2 54.5,169.2" fill="#152238"/>
+  <polygon points="61.5,164.8 261.5,164.8 268.5,160.2 68.5,160.2" fill="#1e4363"/>
+  <polygon points="75.5,155.8 275.5,155.8 282.5,151.2 82.5,151.2" fill="#152238"/>
+  <polygon points="89.5,146.8 289.5,146.8 296.5,142.2 96.5,142.2" fill="#152238"/>
+  <polygon points="30.0,130.0 230.0,130.0 300.0,85.0 100.0,85.0" fill="#e9dbe6" stroke="#b382a8" stroke-width="1"/>
+  <polygon points="138.2,109.8 152.2,109.8 159.2,105.2 145.2,105.2" fill="#b382a8"/>
+  <polygon points="40.0,75.0 54.0,75.0 124.0,30.0 110.0,30.0" fill="#152238"/>
+  <polygon points="73.3,75.0 87.3,75.0 157.3,30.0 143.3,30.0" fill="#152238"/>
+  <polygon points="106.7,75.0 120.7,75.0 190.7,30.0 176.7,30.0" fill="#1e4363"/>
+  <polygon points="140.0,75.0 154.0,75.0 224.0,30.0 210.0,30.0" fill="#152238"/>
+  <polygon points="173.3,75.0 187.3,75.0 257.3,30.0 243.3,30.0" fill="#152238"/>
+  <polygon points="206.7,75.0 220.7,75.0 290.7,30.0 276.7,30.0" fill="#152238"/>
+  <line x1="148.7" y1="8" x2="148.7" y2="162.5" stroke="#9aa6bf" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="154.7" y="14" font-size="11" fill="#152238">1 cell</text>
+  <g font-size="11" fill="#152238">
+    <text x="312" y="56">Copper columns</text>
+    <text x="312" y="111">Velostat</text>
+    <text x="312" y="166">Copper rows</text>
+  </g>
+</svg>

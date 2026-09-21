@@ -39,25 +39,243 @@
             </nav>
              </div>
 
-                <div class="jumbotron" style="background-color: #250A2E">
+                <div class="jumbotron" style="background-color: #152238">
                     <h1 class="display-4 bold" style="color:white; display: inline;">Surf Pop-Up Trainer</h1>
                     <p class="lead" style="color: #e5eefc"></p>
                     <!-- Swap the line above for the one-sentence pitch once the build starts. -->
                     <hr class="my-4" style="background-color:#e5eefc">
-                    <p style="color: #e5eefc"> <span style="color: #b382a8">Technologies:</span> <!-- CAD, 3D printing, sensors, ... --> </p>
+                    <p style="color: #e5eefc"> <span style="color: #b382a8">Technologies:</span> sensor design, analog electronics, STM32, embedded firmware, data visualization </p>
                 </div>
+
+
+
+          <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Overview</h1>
+                </div>
+            </div>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <img src="../imgs/surf/pop_up.gif" alt="Surfing pop-up demonstration" class="img-fluid">
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <img src="../imgs/surf/pro_pop_up.gif" alt="Professional surfer pop-up demonstration" class="img-fluid">
+                    </div>
+                  </div>
+                  <p style="text-align:center"><b>Figure 1:</b> Beginner / advanced pop-up</p>
+                    <p style="text-align: left;">
+                      In surfing, the pop-up is the transition from catching a wave to riding it. It's important for all levels - a good pop-up lets beginner surfers catch more waves and advanced surfers get into the proper position for their first maneuver.
+                    </p>
+
+                    <p style="text-align: left;"> The pop-up can be practiced on land, but usually without feedback. I wanted to build a device that would provide that feedback so people could improve their pop-up faster</p>
+
+                </div>
+                
+            </div>
+            
+          <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Design</h1>
+                </div>
+            </div>
+
+            <h3>research</h3>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">Before building, I wanted to see if anything like this was already available and what tech I could leverage. </p>
+                    
+                    <p style="text-align: left;">There were a few mats with printouts for hand and foot placement, and some mechanical balancing devices, but nothing that provided the digital feedback I imagined.</p>
+
+                    <p style="text-align: left;">I wanted to build a device that could measure pop-up speed, final body position, and weight distribution, along with a way to track progress over time.</p>
+
+                    <p style="text-align: left;">I looked into existing ways of detecting weight distribution electrically, looking for existing solutions I could retrofit.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">load cells</h5>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/load_cell_side.svg">
+                    <p style="text-align:center"><b>Figure 2:</b> Load cell mount, side view</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/load_cell_triangle.svg">
+                    <p style="text-align:center"><b>Figure 3:</b> Load cell layout, top view</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">Load cells were my first idea. A beam load cell (Figure 2) has strain gauges that change resistance as its metal body flexes. Three of them under a board (Figure 3) can find the center of pressure and time the pop-up. But three readings can't describe a pressure pattern, since many different stances produce the same measurement. I wanted to see where the hands and feet actually land and what the weight distribution looked like.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">camera-based pose estimation</h5>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/pose_estimation.svg">
+                    <p style="text-align:center"><b>Figure 4:</b> Markerless pose estimation (e.g. <a href="https://opencap.ai/" target="_blank">OpenCap</a>)</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">Next I came across camera-based pose estimation. Two or more cameras film the pop-up, and a neural network finds the joints in each frame. Since the camera positions are known, a line can be drawn from each camera through a joint, and where the lines meet gives that joint's 3D position (Figure 4). This is a cool approach that needs nothing but cameras. It can measure pop-up duration, track how the body moves, and capture the final stance, like foot spacing and knee bend. However, it can't measure force, so it can't tell how the weight is split between the hands and feet. Calibrating the cameras is also a lot of extra work and would limit where this trainer can be used.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">piezoresistive sensors</h5>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/fsr_array_side.svg">
+                    <p style="text-align:center"><b>Figure 5:</b> Pressure sensor array, side view</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/pressure_grid_192.svg">
+                    <p style="text-align:center"><b>Figure 6:</b> 192-sensor grid, top view</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">I then looked at traditional pressure sensors. These have a piezoresistive material sandwiched between two conductive layers, and its resistance changes as force varies. Applying a voltage across the layers and measuring the current gives the force.</p>
+
+                    <p style="text-align: left;">A single sensor only measures the area it covers, but spreading many of them across the board gives a pressure map (Figure 6). The more sensors, the higher the resolution.</p>
+
+                    <p style="text-align: left;">Instead of buying many pre-made sensors, I could make my own large array and scale the resolution to whatever I need.</p>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">COTS components</h5>
+                    <p style="text-align: left;">Piezoresistive sensors seemed the most promising. Before building my own, I checked for pre-made products I could retrofit, like the Wii Balance Board and the foot pressure scanners at running stores. The Wii Balance Board is cheap, but it's just four load cells, so it has the same limits as above, and it's much smaller than a surfboard. The running store scanners do map pressure, but they're expensive, sized for one person's feet, and make it hard to get the raw data out.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">trades</h5>
+                    <div class="table-responsive">
+                        <table class="tradeTable">
+                            <thead>
+                                <tr>
+                                    <th>Approach</th>
+                                    <th>Measures</th>
+                                    <th>Drawback</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Load cells</td>
+                                    <td>Force, center of pressure, timing</td>
+                                    <td>No pressure pattern</td>
+                                </tr>
+                                <tr>
+                                    <td>Pose estimation</td>
+                                    <td>Body motion, timing, final stance</td>
+                                    <td>No force; camera calibration</td>
+                                </tr>
+                                <tr class="selected">
+                                    <td>Piezoresistive sensors</td>
+                                    <td>Pressure map of hands and feet, timing</td>
+                                    <td>Custom build</td>
+                                </tr>
+                                <tr>
+                                    <td>COTS components</td>
+                                    <td>Center of pressure or foot pressure map</td>
+                                    <td>Too small; expensive or hard to get raw data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <h3>design</h3>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">At this point, I have some pretty solid requirements. I want a popup timing accuracy of 50ms, a clear capture of the weight placement and distribution of the hands and feet, and some way to visualize and keep track of this data.</p>
+                </div>
+            </div>
+
+            <h4>pressure sensor</h4>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/pressure_sensor_layers.svg">
+                    <p style="text-align:center"><b>Figure 7:</b> Pressure sensor layers, exploded view</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">The pressure sensor uses the standard piezoresistive layout: a Velostat sheet between two layers of copper strips running at right angles, where each crossing forms one sensor (Figure 7).</p>
+
+                    <p style="text-align: left;">The spacing comes from the smallest feature I wanted to resolve. Feet (~25 cm) and hands (~10 cm) are large, but details like the heel of the hand or the outer edge of the foot are around 3 cm. Sampling those at least twice means a sensor every 1.5 cm, so I used 1 cm copper strips with 0.5 cm gaps.</p>
+
+                    <p style="text-align: left;">There's room to cut down the number of sensors, since much of the board is never touched. To keep things simple, I started by covering the full board.</p>
+                </div>
+            </div>
+
+
+            <h4>data capture</h4>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/electrical_block.svg">
+                    <p style="text-align:center"><b>Figure 8:</b> Sensor readout, block diagram</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">Given the 34 × 67 layout, there are 2,278 sensors on the mat, and all of them need to be read fast enough to capture the pop-up, since the transitions are the interesting part. To hit the 50 ms timing target, I aimed to scan the full mat 50–100 times a second.</p>
+
+                    <p style="text-align: left;">The mat is scanned a column at a time. Driving one column powers all 67 sensors in it at once, and each row has its own amplifier that turns the small current through a pressed sensor into a voltage. The ADC then steps through those 67 outputs before moving to the next column.</p>
+
+                    <p style="text-align: left;">The STM32 doesn't have 67 analog inputs, so five multiplexers pass the amplifier outputs to the ADC, five at a time. This results in the architecture shown in Figure 8.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">reading one cell at a time</h5>
+                    <p style="text-align: left;">One concern was keeping the measurements independent. With a voltage divider, current leaks between cells: if three cells that form the corners of a rectangle are pressed, current sneaks through all three and into the fourth, so a cell nobody touched reads as pressed (Figure 9). That happens constantly during a pop-up, when two hands and a foot are down at once.</p>
+
+                    <p style="text-align: left;">A diode on every column fixes it, but that's 34 more parts, each with its own voltage drop. Instead I used an op-amp per row (Figure 10). It holds every row at the same voltage, so any cell off the scanned column has that voltage on both sides and no current can flow through it. The leak paths disappear instead of being blocked.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/divider_vs_tia.svg">
+                    <p style="text-align:center"><b>Figure 9:</b> Divider vs. op-amp readout</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/tia_circuit.svg">
+                    <p style="text-align:center"><b>Figure 10:</b> Row amplifier, one per row</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 style="text-align: left;">getting the data to a computer</h5>
+                    <p style="text-align: left;">Each frame is 2,278 readings at 2 bytes each, so about 4.6 kB. At 100 frames a second that comes out to 460 kB/s, or under 4 Mbit/s.</p>
+
+                    <p style="text-align: left;">A serial connection over USB handles that. The STM32's USB runs at 12 Mbit/s and likely actually drops lower due overhead. Regardless, there's room to spare at my target frame rate. Latency isn't a concern either, since the analysis happens after the rep rather than live. We can tolerate transmission and processing overhead. We can even buffer frames and send them at later points.</p>
+
+                    <p style="text-align: left;">Eventually I'd like to drop the cable and stream to a phone over Bluetooth or wifi. <add node about bt/wifi protocols here> Also, most of the mat reads nothing at any moment, so sending only the cells above the baseline should cut the frame size down a lot.</p>
+                </div>
+            </div>
+
+            <h4>data visualization and analysis</h4>
+            <h5> visualizer </h5>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">The first tool I built plays a rep back frame by frame, shading each cell by how hard it's pressed.</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <img class="img-fluid myImage" style="max-width:420px; width:100%" src="../imgs/surf/mat_beginner.gif" alt="Pressure scan of a beginner pop-up: feet land late, square to the board and forward of the traction pad">
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <img class="img-fluid myImage" style="max-width:420px; width:100%" src="../imgs/surf/mat_advanced.gif" alt="Pressure scan of an advanced pop-up: both feet land together, back foot on the traction pad, front foot angled about 45 degrees">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align:center"><b>Figure 11:</b> Pop-up pressure scans, beginner and advanced.</p>
+                </div>
+       
+            </div>
+
+            <h5> analyzer </h5>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">A pop-up can be broken down into five main states. At different levels, these skills states are transitioned through faster and with better form.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/popup_states.svg" alt="Timeline comparing the five pop-up states for a beginner and an advanced rep: the beginner reaches a stance at 2.40 seconds, the advanced rep at 1.28 seconds">
+                    <p style="text-align:center"><b>Figure 12:</b> Pop-up states over time</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">The analyzer categorizes each of these and analyzes each individually. There are parameters (such as how close to the tailpad the back leg is and how far apart the feet are) that can be used to provide feedback at each state. A metric-based feedback approach seems sufficient here. However, it's also possible to add a neural network trained on good popups. I'd only add this complexity if the metric-based approach doesnt seem sufficient.  </p>
+
+                </div>
+            </div> 
+
+
 
 
             <!-- Figure template - copy anywhere below a heading:
 
-            <div class="row pb-3 frame">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
-                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/FILE.png">
-                    <p style="text-align:center"><b>Figure 1: Caption</b></p>
-                </div>
-            </div>
-
-            Video template:
+            Video template:a
 
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
@@ -66,13 +284,22 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
-                    <p><b>Figure 2: Caption</b></p>
+                    <p><b>Figure N:</b> Caption</p>
                 </div>
             </div>
 
             -->
 
-            work in progress
+          <div class="row pb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Build</h1>
+                </div>
+            </div>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">work in progress</p>
+                </div>
+            </div>
 
             <footer class="siteFooter">
                 <a href="mailto:victortaksheyev@gmail.com">victortaksheyev@gmail.com</a>

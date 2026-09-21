@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1e4363"/>
+    </marker>
+    <marker id="n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#152238"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="55" width="110" height="90" fill="#ffffff" stroke="#152238" stroke-width="1.5"/>
+  <g stroke="#9aa6bf" stroke-width="1">
+    <line x1="38" y1="55" x2="38" y2="145"/><line x1="56" y1="55" x2="56" y2="145"/>
+    <line x1="75" y1="55" x2="75" y2="145"/><line x1="94" y1="55" x2="94" y2="145"/>
+    <line x1="112" y1="55" x2="112" y2="145"/>
+    <line x1="20" y1="70" x2="130" y2="70"/><line x1="20" y1="85" x2="130" y2="85"/>
+    <line x1="20" y1="100" x2="130" y2="100"/><line x1="20" y1="115" x2="130" y2="115"/>
+    <line x1="20" y1="130" x2="130" y2="130"/>
+  </g>
+
+  <g fill="#eef1f6" stroke="#152238" stroke-width="1.5">
+    <rect x="180" y="70" width="100" height="60" rx="4"/>
+    <rect x="180" y="152" width="100" height="26" rx="4"/>
+    <rect x="325" y="70" width="90" height="60" rx="4"/>
+    <rect x="455" y="25" width="105" height="145" rx="4"/>
+    <rect x="455" y="190" width="105" height="30" rx="4"/>
+  </g>
+
+  <g fill="none" stroke-width="1.5">
+    <line x1="130" y1="100" x2="178" y2="100" stroke="#1e4363" marker-end="url(#m)"/>
+    <line x1="280" y1="100" x2="323" y2="100" stroke="#1e4363" marker-end="url(#m)"/>
+    <line x1="415" y1="100" x2="453" y2="100" stroke="#1e4363" marker-end="url(#m)"/>
+    <line x1="507" y1="170" x2="507" y2="188" stroke="#1e4363" marker-end="url(#m)"/>
+    <polyline points="455,40 75,40 75,53" stroke="#152238" marker-end="url(#n)"/>
+    <polyline points="455,150 370,150 370,132" stroke="#152238" marker-end="url(#n)"/>
+    <line x1="230" y1="152" x2="230" y2="132" stroke="#152238" marker-end="url(#n)"/>
+  </g>
+
+  <g font-size="12" fill="#152238" text-anchor="middle">
+    <text x="75" y="162">Sensor mat</text>
+    <text x="230" y="98">67× TIA</text>
+    <text x="230" y="169">V_bias</text>
+    <text x="370" y="98">5× 16:1 mux</text>
+    <text x="507" y="80">STM32F407</text>
+    <text x="507" y="210">Laptop</text>
+  </g>
+  <g font-size="10" fill="#6c757d" text-anchor="middle">
+    <text x="75" y="176">34 × 67 cells</text>
+    <text x="230" y="113">MCP6004 ×17</text>
+    <text x="370" y="113">CD74HC4067</text>
+  </g>
+  <g font-size="10" fill="#152238">
+    <text x="462" y="44">GPIO</text>
+    <text x="462" y="104">ADC</text>
+    <text x="462" y="154">GPIO</text>
+    <text x="154" y="94" text-anchor="middle">67</text>
+    <text x="301" y="94" text-anchor="middle">67</text>
+    <text x="434" y="94" text-anchor="middle">5</text>
+    <text x="513" y="183">USB</text>
+    <text x="265" y="34" text-anchor="middle">34 columns</text>
+    <text x="412" y="164" text-anchor="middle">4 address</text>
+  </g>
+</svg>

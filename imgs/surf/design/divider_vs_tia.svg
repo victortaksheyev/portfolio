@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 178" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <defs><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#152238"/></marker></defs>
+  <g><text x="140" y="13" font-size="12.5" fill="#152238" text-anchor="middle">Voltage divider</text>
+    <rect x="59" y="46" width="32" height="100" rx="4" fill="#1e4363" fill-opacity="0.09" stroke="#1e4363" stroke-width="1" stroke-dasharray="4 3"/>
+    <g stroke="#152238" stroke-width="1.5" fill="none">
+      <line x1="75" y1="46" x2="75" y2="146"/>
+      <line x1="155" y1="46" x2="155" y2="146"/>
+      <line x1="50" y1="70" x2="190" y2="70"/>
+      <line x1="50" y1="120" x2="190" y2="120"/>
+    </g>
+    <polyline points="75,50 75,70 155,70 155,120 211,120" fill="none" stroke="#1e4363" stroke-width="2.5" stroke-dasharray="5 4"/>
+    <rect x="65" y="62" width="20" height="16" rx="3" fill="#1e4363" stroke="#152238" stroke-width="1.5"/>
+    <rect x="65" y="112" width="20" height="16" rx="3" fill="#ffffff" stroke="#152238" stroke-width="1.5"/>
+    <rect x="145" y="62" width="20" height="16" rx="3" fill="#1e4363" stroke="#152238" stroke-width="1.5"/>
+    <rect x="145" y="112" width="20" height="16" rx="3" fill="#1e4363" stroke="#152238" stroke-width="1.5"/>
+    <g stroke="#152238" stroke-width="1.5" fill="none"><line x1="190" y1="70" x2="211" y2="70"/><line x1="211" y1="70" x2="211" y2="80"/><line x1="211" y1="96" x2="211" y2="104"/></g>
+    <rect x="203" y="80" width="16" height="16" fill="#ffffff" stroke="#152238" stroke-width="1.5"/>
+    <line x1="202" y1="104" x2="220" y2="104" stroke="#152238" stroke-width="1.5"/>
+    <line x1="206" y1="108" x2="216" y2="108" stroke="#152238" stroke-width="1.5"/>
+    <line x1="209" y1="112" x2="213" y2="112" stroke="#152238" stroke-width="1.5"/>
+    <line x1="211" y1="70" x2="246" y2="70" stroke="#152238" stroke-width="1.5" marker-end="url(#o)"/>
+    <text x="250" y="74" font-size="11" fill="#152238">ADC</text>
+    <g stroke="#152238" stroke-width="1.5" fill="none"><line x1="190" y1="120" x2="211" y2="120"/><line x1="211" y1="120" x2="211" y2="130"/><line x1="211" y1="146" x2="211" y2="154"/></g>
+    <rect x="203" y="130" width="16" height="16" fill="#ffffff" stroke="#152238" stroke-width="1.5"/>
+    <line x1="202" y1="154" x2="220" y2="154" stroke="#152238" stroke-width="1.5"/>
+    <line x1="206" y1="158" x2="216" y2="158" stroke="#152238" stroke-width="1.5"/>
+    <line x1="209" y1="162" x2="213" y2="162" stroke="#152238" stroke-width="1.5"/>
+    <line x1="211" y1="120" x2="246" y2="120" stroke="#152238" stroke-width="1.5" marker-end="url(#o)"/>
+    <text x="250" y="124" font-size="11" fill="#152238">ADC</text>
+    <text x="75" y="26" font-size="11" fill="#152238" text-anchor="middle">scanned</text>
+    <text x="75" y="39" font-size="11" fill="#6c757d" text-anchor="middle">3.3 V</text>
+    <text x="155" y="26" font-size="11" fill="#152238" text-anchor="middle">floating</text>
+    <text x="155" y="39" font-size="11" fill="#6c757d" text-anchor="middle">0.95 V</text>
+    <text x="44" y="74" font-size="11" fill="#6c757d" text-anchor="end">row 1</text>
+    <text x="208" y="61" font-size="11" fill="#152238" text-anchor="end">1.42 V</text>
+    <text x="44" y="124" font-size="11" fill="#6c757d" text-anchor="end">row 2</text>
+    <text x="199" y="111" font-size="11" fill="#152238" text-anchor="end">0.49 V</text>
+    <text x="115" y="94" font-size="10" fill="#1e4363" text-anchor="middle">ΔV 0.46 V</text>
+    <text x="115" y="144" font-size="10" fill="#1e4363" text-anchor="middle">ΔV 0.46 V</text>
+    <text x="75" y="166" font-size="11" fill="#1e4363" text-anchor="middle">cells being read</text>
+  </g>
+  <g transform="translate(300,0)"><text x="140" y="13" font-size="12.5" fill="#152238" text-anchor="middle">Op-amp per row</text>
+    <rect x="59" y="46" width="32" height="100" rx="4" fill="#1e4363" fill-opacity="0.09" stroke="#1e4363" stroke-width="1" stroke-dasharray="4 3"/>
+    <g stroke="#152238" stroke-width="1.5" fill="none">
+      <line x1="75" y1="46" x2="75" y2="146"/>
+      <line x1="155" y1="46" x2="155" y2="146"/>
+      <line x1="50" y1="70" x2="190" y2="70"/>
+      <line x1="50" y1="120" x2="190" y2="120"/>
+    </g>
+    <polyline points="75,50 75,70 155,70 155,120 201,120" fill="none" stroke="#c7ccd8" stroke-width="2.5" stroke-dasharray="5 4"/>
+    <rect x="65" y="62" width="20" height="16" rx="3" fill="#1e4363" stroke="#152238" stroke-width="1.5"/>
+    <rect x="65" y="112" width="20" height="16" rx="3" fill="#ffffff" stroke="#152238" stroke-width="1.5"/>
+    <rect x="145" y="62" width="20" height="16" rx="3" fill="#1e4363" stroke="#152238" stroke-width="1.5"/>
+    <rect x="145" y="112" width="20" height="16" rx="3" fill="#1e4363" stroke="#152238" stroke-width="1.5"/>
+    <line x1="190" y1="70" x2="201" y2="70" stroke="#152238" stroke-width="1.5"/>
+    <path d="M201,57 L201,83 L227,70 Z" fill="#eef1f6" stroke="#152238" stroke-width="1.5"/>
+    <line x1="227" y1="70" x2="246" y2="70" stroke="#152238" stroke-width="1.5" marker-end="url(#o)"/>
+    <text x="250" y="74" font-size="11" fill="#152238">ADC</text>
+    <line x1="190" y1="120" x2="201" y2="120" stroke="#152238" stroke-width="1.5"/>
+    <path d="M201,107 L201,133 L227,120 Z" fill="#eef1f6" stroke="#152238" stroke-width="1.5"/>
+    <line x1="227" y1="120" x2="246" y2="120" stroke="#152238" stroke-width="1.5" marker-end="url(#o)"/>
+    <text x="250" y="124" font-size="11" fill="#152238">ADC</text>
+    <g stroke="#1e4363" stroke-width="2.5"><line x1="112" y1="64" x2="124" y2="76"/><line x1="124" y1="64" x2="112" y2="76"/></g>
+    <text x="75" y="26" font-size="11" fill="#152238" text-anchor="middle">scanned</text>
+    <text x="75" y="39" font-size="11" fill="#6c757d" text-anchor="middle">0 V</text>
+    <text x="155" y="26" font-size="11" fill="#152238" text-anchor="middle">floating</text>
+    <text x="155" y="39" font-size="11" fill="#6c757d" text-anchor="middle">0.40 V</text>
+    <text x="44" y="74" font-size="11" fill="#6c757d" text-anchor="end">row 1</text>
+    <text x="198" y="61" font-size="11" fill="#152238" text-anchor="end">0.40 V</text>
+    <text x="44" y="124" font-size="11" fill="#6c757d" text-anchor="end">row 2</text>
+    <text x="198" y="111" font-size="11" fill="#152238" text-anchor="end">0.40 V</text>
+    <text x="115" y="94" font-size="10" fill="#6c757d" text-anchor="middle">ΔV 0</text>
+    <text x="115" y="144" font-size="10" fill="#6c757d" text-anchor="middle">ΔV 0</text>
+    <text x="75" y="166" font-size="11" fill="#1e4363" text-anchor="middle">cells being read</text>
+  </g>
+</svg>
