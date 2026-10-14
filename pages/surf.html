@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
 
@@ -49,19 +50,28 @@
 
 
 
+            <nav class="toc" aria-label="Contents">
+                <a class="tocTop" href="#overview">Overview</a>
+                <ul></ul>
+                <a class="tocTop" href="#design">Design</a>
+                <ul><li><a href="#research">research</a></li><li><a href="#requirements">requirements</a></li><li><a href="#pressure-sensor">pressure sensor</a></li><li><a href="#data-capture">data capture</a></li><li><a href="#data-visualization">data visualization and analysis</a></li></ul>
+                <a class="tocTop" href="#build">Build</a>
+                <ul><li><a href="#test-patch">test patch</a></li><li><a href="#initial-testing">initial testing</a></li><li><a href="#readout-pcb">readout pcb</a></li></ul>
+            </nav>
+
           <div class="row pb-3">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>Overview</h1>
+                    <h1 id="overview">Overview</h1>
                 </div>
             </div>
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <div class="row">
                     <div class="col-12 col-md-6">
-                      <img src="../imgs/surf/pop_up.gif" alt="Surfing pop-up demonstration" class="img-fluid">
+                      <img src="../imgs/surf/pop_up.gif" alt="Surfing pop-up demonstration" class="img-fluid myImage">
                     </div>
                     <div class="col-12 col-md-6">
-                      <img src="../imgs/surf/pro_pop_up.gif" alt="Professional surfer pop-up demonstration" class="img-fluid">
+                      <img src="../imgs/surf/pro_pop_up.gif" alt="Professional surfer pop-up demonstration" class="img-fluid myImage">
                     </div>
                   </div>
                   <p style="text-align:center"><b>Figure 1:</b> Beginner / advanced pop-up</p>
@@ -77,11 +87,11 @@
             
           <div class="row pb-3">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>Design</h1>
+                    <h1 id="design">Design</h1>
                 </div>
             </div>
 
-            <h3>research</h3>
+            <h3 id="research">research</h3>
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <p style="text-align: left;">Before building, I wanted to see if anything like this was already available and what tech I could leverage. </p>
@@ -177,14 +187,14 @@
                 </div>
             </div>
 
-            <h3>design</h3>
+            <h3 id="requirements">requirements</h3>
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <p style="text-align: left;">At this point, I have some pretty solid requirements. I want a popup timing accuracy of 50ms, a clear capture of the weight placement and distribution of the hands and feet, and some way to visualize and keep track of this data.</p>
                 </div>
             </div>
 
-            <h4>pressure sensor</h4>
+            <h3 id="pressure-sensor">pressure sensor</h3>
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="display: block; margin:auto;">
                     <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/pressure_sensor_layers.svg">
@@ -200,7 +210,7 @@
             </div>
 
 
-            <h4>data capture</h4>
+            <h3 id="data-capture">data capture</h3>
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
                     <img width="100%" class="img-fluid myImage" src="../imgs/surf/design/electrical_block.svg">
@@ -237,7 +247,7 @@
                 </div>
             </div>
 
-            <h4>data visualization and analysis</h4>
+            <h3 id="data-visualization">data visualization and analysis</h3>
             <h5> visualizer </h5>
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -292,9 +302,52 @@
 
           <div class="row pb-3">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>Build</h1>
+                    <h1 id="build">Build</h1>
                 </div>
             </div>
+            <h3 id="test-patch">test patch</h3>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/build/copper_strips.jpg" alt="Laying copper tape strips onto black foam sheets">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/build/soldering.jpg" alt="Soldering ribbon cable wires to the ends of the copper strips">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">I started simple, proving out the circuit on a minimal 4x4 grid. The patch in the photos has 8 strips each way, but I only wired half of the rows and columns to the mux and ADC.</p>
+
+                    <p style="text-align: left;">The copper strips are spaced 0.5 cm apart, and each one has a lead soldered to it. The column leads apply a voltage to their strip. The row leads carry the current through any pressed cell to that row's amplifier, which turns it into a voltage for the ADC to read.</p>
+                </div>
+            </div>
+
+            <h3 id="initial-testing">initial testing</h3>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block; margin:auto;">
+                    <video class="myImage" style="width:100%; display:block" autoplay loop muted playsinline aria-label="Pressing the test patch while a laptop shows a 4 by 4 grid of readings updating at 100 Hz"><source src="../imgs/surf/build/initial_test.mp4" type="video/mp4"></video>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">With the patch wired up, I tested the circuit by pressing on different cells and watching the readings come in at 100 Hz. I checked that pressing a group of cells didn't leak current into cells nobody touched, so the row amplifiers were doing their job, and tuned the resistor values to get a good signal range.</p>
+                </div>
+            </div>
+
+            <h3 id="readout-pcb">readout pcb</h3>
+            <div class="row pb-3 frame">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p style="text-align: left;">Once the prototype was working, I moved the circuit onto a PCB to clean up the breadboard mess. I picked the connectors with that in mind too. Everything connects with ribbon cables, so the mat and the STM32 just plug into headers on the board instead of dozens of loose wires.</p>
+
+                    <p style="text-align: left;">I also laid the board out so it's easy to work on later. The row amplifiers and muxes are grouped into blocks with room around them, so I can get to any part to probe or replace it.</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/build/pcb_full.png" alt="Full readout board layout in KiCad, front copper: row connector on the left, column connectors along the bottom, STM32 connector on the right">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" style="display: block; margin:auto;">
+                    <video class="myImage" style="width:100%; display:block" autoplay loop muted playsinline aria-label="KiCad PCB layout, stepping from all layers to the inner planes to the front copper and zooming in on the row amplifiers"><source src="../imgs/surf/build/pcb_layout.mp4" type="video/mp4"></video>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" style="display: block; margin:auto;">
+                    <img width="100%" class="img-fluid myImage" src="../imgs/surf/build/pcb_3d.jpg" alt="3D render of the surfmat readout board with row and column connectors">
+                </div>
+            </div>
+
             <div class="row pb-3 frame">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <p style="text-align: left;">work in progress</p>
@@ -305,5 +358,21 @@
                 <a href="mailto:victortaksheyev@gmail.com">victortaksheyev@gmail.com</a>
             </footer>
         </div>
+        <script>
+            // mark the contents link for the section currently being read
+            (function () {
+                var links = [].slice.call(document.querySelectorAll('.toc a'));
+                var targets = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+                function update() {
+                    var current = 0;
+                    targets.forEach(function (t, i) { if (t.getBoundingClientRect().top < 140) current = i; });
+                    // the last sections can't scroll to the top, so at the bottom of the page mark the last one
+                    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = targets.length - 1;
+                    links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+                }
+                window.addEventListener('scroll', update, { passive: true });
+                update();
+            })();
+        </script>
     </body>
 </html>
